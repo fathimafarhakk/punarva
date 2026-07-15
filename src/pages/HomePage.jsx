@@ -194,17 +194,14 @@ export default function HomePage() {
           </div>
           <div className="org-grid">
             <div className="org-card">
-              <img src="/nss-logo.png" alt="NSS Logo" className="org-seal-img" />
               <h4>Organized By</h4>
               <p>National Service Scheme (NSS)<br />EMEA College Units 102 &amp; 115</p>
             </div>
             <div className="org-card">
-              <img src="/emea-logo.jpeg" alt="EMEA College Logo" className="org-seal-img" style={{ borderRadius: '6px' }} />
               <h4>Host Institution</h4>
               <p>EMEA College of Arts &amp; Science<br />Affiliated with University of Calicut</p>
             </div>
             <div className="org-card">
-              <img src="/logo.png" alt="PUNARVA Logo" className="org-seal-img" />
               <h4>State-Level Camp</h4>
               <p>PUNARVA 2K26<br />Under the Swachhata Action Plan (SAP)</p>
             </div>

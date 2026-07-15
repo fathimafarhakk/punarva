@@ -271,6 +271,29 @@ export default function AdminDashboardPage() {
           </div>
         </section>
       </main>
+
+      <footer className="dashboard-footer" style={{
+        textAlign: 'center',
+        padding: '30px 20px',
+        color: 'var(--ink-soft)',
+        fontSize: '13.5px',
+        background: '#fffdf8',
+        borderTop: '1px solid rgba(0, 39, 90, 0.08)',
+        marginTop: '40px'
+      }}>
+        <p>&copy; {new Date().getFullYear()} PUNARVA EMEA Admin Portal. All rights reserved.</p>
+        <p style={{ marginTop: '6px', fontSize: '12.5px' }}>
+          Crafted with heart by{' '}
+          <a
+            href="https://www.linkedin.com/in/fathima-farha-kk-a76940370/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'var(--forest)', fontWeight: '600', textDecoration: 'underline' }}
+          >
+            Fathima Farha KK
+          </a>
+        </p>
+      </footer>
     </>
   );
 }

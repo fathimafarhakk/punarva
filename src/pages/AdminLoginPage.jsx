@@ -94,6 +94,17 @@ export default function AdminLoginPage() {
           <strong>PUNARVA 2K26</strong><br />
           National Service Scheme<br />
           EMEA College of Arts &amp; Science, Kondotty
+          <div className="login-credits" style={{ marginTop: '20px', fontSize: '12.5px', opacity: 0.85 }}>
+            Crafted with heart by{' '}
+            <a
+              href="https://www.linkedin.com/in/fathima-farha-kk-a76940370/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--forest)', fontWeight: '600', textDecoration: 'underline' }}
+            >
+              Fathima Farha KK
+            </a>
+          </div>
         </div>
       </div>
     </div>
