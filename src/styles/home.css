@@ -784,7 +784,7 @@ section{
 }
 
 .footer-logo-img{
-  height:40px;
+  height:60px;
   width:auto;
   object-fit:contain;
 }
@@ -794,7 +794,7 @@ section{
 }
 
 .footer-logo-divider{
-  height:24px;
+  height:36px;
   width:1.5px;
   background:rgba(255,255,255,0.15);
 }

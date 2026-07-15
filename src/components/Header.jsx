@@ -21,7 +21,6 @@ export default function Header() {
       <header className={`site-header fade-up-content${scrolled ? ' scrolled' : ''}`} id="siteHeader">
         <div className="nav-wrap">
         <div className="header-logos">
-          <img src="/emea-logo.jpeg" alt="EMEA College Logo" className="header-logo emea" />
           <img src="/nss-logo.png" alt="NSS Logo" className="header-logo nss" />
           <div className="logo-divider"></div>
           <Link className="brand" to="/" aria-label="PUNARVA 2K26 Home" onClick={closeMenu}>
