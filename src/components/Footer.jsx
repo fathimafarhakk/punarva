@@ -26,10 +26,10 @@ export default function Footer() {
         <div className="footer-col links-col">
           <h4>Navigation</h4>
           <nav className="footer-nav-list">
-            <a href="/#about">About the Camp</a>
-            <a href="/#camp">Dates &amp; Venue</a>
-            <a href="/#activities">Camp Activities</a>
-            <a href="/#organizers">Organizers</a>
+            <Link to="/#about">About the Camp</Link>
+            <Link to="/#camp">Dates &amp; Venue</Link>
+            <Link to="/#activities">Camp Activities</Link>
+            <Link to="/#organizers">Organizers</Link>
             <Link to="/registration">Register Now</Link>
           </nav>
         </div>

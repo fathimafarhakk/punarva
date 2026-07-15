@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import SplashScreen from '../components/SplashScreen';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -7,12 +8,12 @@ import Countdown from '../components/Countdown';
 import EventModal from '../components/EventModal';
 
 const EVENTS = [
-  { key: 'led',      num: '01', icon: 'bulb', title: 'LED Bulb Repair & Fixation' },
-  { key: 'tube',     num: '02', icon: 'tube', title: 'Tube Light Repair & Fixation' },
-  { key: 'tiles',    num: '03', icon: 'vase', title: 'Broken Tiles to Decorative Vase' },
-  { key: 'umbrella', num: '04', icon: 'fish', title: 'Umbrella Sheet to Fish Bag' },
-  { key: 'saree',    num: '05', icon: 'bag',  title: 'Old Saree to Carry Bag' },
-  { key: 'fan',      num: '06', icon: 'fan',  title: 'Normal Fan to BLDC Fan' },
+  { key: 'led',      num: '01', icon: 'bulb', title: 'LED Bulb Repair', desc: 'Learn to test, rebuild, and restore discarded LED bulbs and drivers.' },
+  { key: 'tube',     num: '02', icon: 'tube', title: 'Tube Light Repair', desc: 'Reassemble and troubleshoot electronic chokes and energy-saving tube systems.' },
+  { key: 'tiles',    num: '03', icon: 'vase', title: 'Mosaic Tile Art', desc: 'Upcycle broken ceramic tiles into stunning textured decorative vases.' },
+  { key: 'umbrella', num: '04', icon: 'fish', title: 'Umbrella Sheet Bag', desc: 'Transform waste umbrella nylon fabric into durable waterproof fish bags.' },
+  { key: 'saree',    num: '05', icon: 'bag',  title: 'Saree Carry Bag', desc: 'Stitch and craft discarded traditional sarees into eco-friendly carry bags.' },
+  { key: 'fan',      num: '06', icon: 'fan',  title: 'BLDC Fan Conversion', desc: 'Convert energy-inefficient AC fans to modern, smart BLDC motors.' },
 ];
 
 const SVG_ICONS = {
@@ -26,9 +27,28 @@ const SVG_ICONS = {
 
 export default function HomePage() {
   const [activeEvent, setActiveEvent] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1);
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <div className="grain" />
       <SplashScreen />
       <Header />
@@ -141,6 +161,7 @@ export default function HomePage() {
                   <svg viewBox="0 0 24 24">{SVG_ICONS[ev.icon]}</svg>
                 </span>
                 <h3>{ev.title}</h3>
+                <p className="event-desc">{ev.desc}</p>
                 <div className="event-footer">
                   <span className="event-time">
                     <svg className="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.3" fill="none" stroke="currentColor" strokeWidth="1.6"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>
@@ -168,24 +189,24 @@ export default function HomePage() {
         {/* ===== ORGANIZERS ===== */}
         <section className="organizers" id="organizers">
           <div className="section-head">
-            <p className="eyebrow eyebrow-dark">Credits</p>
+            <p className="eyebrow eyebrow-dark">Partners</p>
             <h2>Organized &amp; Supported By</h2>
           </div>
           <div className="org-grid">
             <div className="org-card">
-              <img src="/emea-logo.jpeg" alt="EMEA College Logo" className="org-seal-img" style={{ borderRadius: '6px' }} />
+              <img src="/nss-logo.png" alt="NSS Logo" className="org-seal-img" />
               <h4>Organized By</h4>
-              <p>National Service Scheme (NSS)<br />EMEA College of Arts and Science, Kondotty<br />Unit No. 102 &amp; 115</p>
+              <p>National Service Scheme (NSS)<br />EMEA College Units 102 &amp; 115</p>
             </div>
             <div className="org-card">
-              <img src="/nss-logo.png" alt="NSS Logo" className="org-seal-img" />
-              <h4>In Collaboration With</h4>
-              <p>Regional Directorate of NSS, Thiruvananthapuram<br />State NSS Cell, Kerala</p>
+              <img src="/emea-logo.jpeg" alt="EMEA College Logo" className="org-seal-img" style={{ borderRadius: '6px' }} />
+              <h4>Host Institution</h4>
+              <p>EMEA College of Arts &amp; Science<br />Affiliated with University of Calicut</p>
             </div>
             <div className="org-card">
               <img src="/logo.png" alt="PUNARVA Logo" className="org-seal-img" />
-              <h4>Supported By</h4>
-              <p>University of Calicut</p>
+              <h4>State-Level Camp</h4>
+              <p>PUNARVA 2K26<br />Under the Swachhata Action Plan (SAP)</p>
             </div>
           </div>
         </section>
@@ -197,6 +218,6 @@ export default function HomePage() {
       {activeEvent && (
         <EventModal eventKey={activeEvent} onClose={() => setActiveEvent(null)} />
       )}
-    </>
+    </motion.div>
   );
 }

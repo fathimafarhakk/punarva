@@ -43,10 +43,10 @@ export default function Header() {
         </button>
 
         <nav className={`nav-links${menuOpen ? ' open' : ''}`} id="navLinks">
-          <a href="/#about" onClick={closeMenu}>About</a>
-          <a href="/#camp" onClick={closeMenu}>Camp Details</a>
-          <a href="/#activities" onClick={closeMenu}>Activities</a>
-          <a href="/#organizers" onClick={closeMenu}>Organizers</a>
+          <Link to="/#about" onClick={closeMenu}>About</Link>
+          <Link to="/#camp" onClick={closeMenu}>Camp Details</Link>
+          <Link to="/#activities" onClick={closeMenu}>Activities</Link>
+          <Link to="/#organizers" onClick={closeMenu}>Organizers</Link>
           <Link className="nav-cta" to="/registration" onClick={closeMenu}>Register Now</Link>
         </nav>
       </div>

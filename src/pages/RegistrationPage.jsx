@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StatusModal from '../components/StatusModal';
@@ -41,7 +42,11 @@ export default function RegistrationPage() {
   };
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <div className="grain" />
       <Header />
 
@@ -105,6 +110,6 @@ export default function RegistrationPage() {
           onBack={() => navigate('/')}
         />
       )}
-    </>
+    </motion.div>
   );
 }

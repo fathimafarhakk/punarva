@@ -631,11 +631,17 @@ section{
 
 .event-card h3{
   font-family:var(--font-display);
-  font-size:19px;
+  font-size:20px;
   color:var(--forest);
   line-height:1.35;
-  margin-bottom:18px;
-  min-height:52px;
+  margin-bottom:8px;
+}
+
+.event-desc{
+  font-size:13.5px;
+  line-height:1.55;
+  color:#615a49;
+  margin-bottom:22px;
 }
 
 .event-time{
