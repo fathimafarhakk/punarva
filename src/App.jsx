@@ -13,17 +13,30 @@ function ProtectedRoute({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
+    let active = true;
+    
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      const isSessionStorageLoggedIn = sessionStorage.getItem('adminLoggedIn') === 'true';
-      if (session || isSessionStorageLoggedIn) {
-        setAuthenticated(true);
-      } else {
-        setAuthenticated(false);
+      if (active) {
+        setAuthenticated(!!session);
+        setLoading(false);
       }
-      setLoading(false);
     };
     checkUser();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (active) {
+        setAuthenticated(!!session);
+        if (event === 'SIGNED_OUT' || !session) {
+          setLoading(false);
+        }
+      }
+    });
+
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   if (loading) {
