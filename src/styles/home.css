@@ -1029,7 +1029,7 @@ section{
     top:0;right:0;
     height:100vh;
     width:min(78vw,320px);
-    background:rgba(0, 39, 90, 0.96);
+    background:var(--forest-2);
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
     border-left:2.5px solid var(--gold);
@@ -1062,6 +1062,13 @@ section{
     margin-left:0;
     margin-top:10px;
     border-bottom:none !important;
+    background:var(--gold) !important;
+    color:var(--forest) !important;
+  }
+  .nav-cta:hover,
+  .nav-cta:active{
+    background:var(--gold-2) !important;
+    color:var(--forest) !important;
   }
   .nav-toggle{display:flex;}
 
