@@ -17,7 +17,10 @@ export default function AdminDashboardPage() {
   const [loading,       setLoading]       = useState(true);
   const [error,         setError]         = useState('');
   const [search,        setSearch]        = useState('');
+  const [collegeFilter, setCollegeFilter] = useState('');
+  const [unitFilter,    setUnitFilter]    = useState('');
   const navigate = useNavigate();
+
   useEffect(() => {
     document.body.classList.add('admin-dashboard-body');
     return () => {
@@ -46,35 +49,53 @@ export default function AdminDashboardPage() {
 
   useEffect(() => { loadData(); }, [loadData]);
 
-  // ── Search ─────────────────────────────────────────────────
+  // ── Unique Filters List ────────────────────────────────────
+  const uniqueColleges = Array.from(new Set(registrations.map(r => r.college).filter(Boolean))).sort();
+  const uniqueUnits = Array.from(new Set(registrations.map(r => r.unit_number).filter(Boolean))).sort();
+
+  // ── Filtering Logic ────────────────────────────────────────
   useEffect(() => {
     const q = search.toLowerCase().trim();
-    setFiltered(
-      q
-        ? registrations.filter(r =>
-            (r.full_name   || '').toLowerCase().includes(q) ||
-            (r.college     || '').toLowerCase().includes(q) ||
-            (r.event_name  || '').toLowerCase().includes(q) ||
-            (r.email       || '').toLowerCase().includes(q)
-          )
-        : registrations
-    );
-  }, [search, registrations]);
+    let result = registrations;
+
+    if (q) {
+      result = result.filter(r =>
+        (r.full_name   || '').toLowerCase().includes(q) ||
+        (r.college     || '').toLowerCase().includes(q) ||
+        (r.email       || '').toLowerCase().includes(q) ||
+        (r.phone       || '').toLowerCase().includes(q)
+      );
+    }
+
+    if (collegeFilter) {
+      result = result.filter(r => r.college === collegeFilter);
+    }
+
+    if (unitFilter) {
+      result = result.filter(r => String(r.unit_number) === unitFilter);
+    }
+
+    setFiltered(result);
+  }, [search, collegeFilter, unitFilter, registrations]);
 
   // ── Stats ──────────────────────────────────────────────────
   const totalRegistrations = registrations.length;
   const totalColleges      = new Set(registrations.map(r => r.college).filter(Boolean)).size;
-  const totalEvents        = new Set(registrations.map(r => r.event_name).filter(Boolean)).size;
+  const totalUnits         = new Set(registrations.map(r => r.unit_number).filter(Boolean)).size;
   const today              = new Date().toISOString().split('T')[0];
   const todayCount         = registrations.filter(r => r.created_at?.startsWith(today)).length;
 
   // ── CSV Download ───────────────────────────────────────────
   const downloadCSV = () => {
     if (!registrations.length) return alert('No data to download.');
-    const headers = ['#', 'Full Name', 'College', 'Email', 'Phone', 'Event', 'Unit No.', 'Registered At'];
+    const headers = ['#', 'Full Name', 'College', 'Email', 'Phone', 'Unit No.', 'Registered At'];
     const rows = registrations.map((s, i) => [
-      i + 1, s.full_name ?? '', s.college ?? '', s.email ?? '',
-      s.phone ?? '', s.event_name ?? '', s.unit_number ?? '',
+      i + 1,
+      s.full_name ?? '',
+      s.college ?? '',
+      s.email ?? '',
+      s.phone ?? '',
+      s.unit_number ?? '',
       s.created_at ? new Date(s.created_at).toLocaleString() : '',
     ].map(v => `"${String(v).replace(/"/g, '""')}"`));
     const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
@@ -115,7 +136,7 @@ export default function AdminDashboardPage() {
           {[
             { label: 'Total Registrations', id: 'totalRegistrations', value: totalRegistrations },
             { label: 'Total Colleges',       id: 'totalColleges',       value: totalColleges },
-            { label: 'Total Events',         id: 'totalEvents',         value: totalEvents },
+            { label: 'Total NSS Units',      id: 'totalUnits',          value: totalUnits },
             { label: "Today's Registrations",id: 'todayRegistrations',  value: todayCount },
           ].map(s => (
             <div className="stat-card" key={s.id}>
@@ -127,13 +148,38 @@ export default function AdminDashboardPage() {
 
         {/* TOOLBAR */}
         <section className="toolbar">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search by Name, College or Event"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
+          <div className="toolbar-left">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search by Name, College or Email"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+            />
+
+            <select
+              value={collegeFilter}
+              onChange={e => setCollegeFilter(e.target.value)}
+              className="filter-select"
+            >
+              <option value="">All Colleges</option>
+              {uniqueColleges.map(c => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+
+            <select
+              value={unitFilter}
+              onChange={e => setUnitFilter(e.target.value)}
+              className="filter-select"
+            >
+              <option value="">All NSS Units</option>
+              {uniqueUnits.map(u => (
+                <option key={u} value={String(u)}>Unit {u}</option>
+              ))}
+            </select>
+          </div>
+
           <button id="downloadBtn" onClick={downloadCSV}>Download CSV</button>
         </section>
 
@@ -152,20 +198,19 @@ export default function AdminDashboardPage() {
                 <th>College</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Event</th>
                 <th>Unit No.</th>
               </tr>
             </thead>
             <tbody id="tableBody">
               {loading ? (
                 <tr>
-                  <td colSpan="7" style={{ textAlign: 'center', padding: '2rem', opacity: 0.5 }}>
+                  <td colSpan="6" style={{ textAlign: 'center', padding: '2rem', opacity: 0.5 }}>
                     Loading registrations…
                   </td>
                 </tr>
               ) : filtered.length === 0 ? (
                 <tr>
-                  <td colSpan="7" style={{ textAlign: 'center', padding: '2rem', opacity: 0.5 }}>
+                  <td colSpan="6" style={{ textAlign: 'center', padding: '2rem', opacity: 0.5 }}>
                     No registrations found.
                   </td>
                 </tr>
@@ -177,7 +222,6 @@ export default function AdminDashboardPage() {
                     <td>{escapeHtml(s.college)}</td>
                     <td>{escapeHtml(s.email)}</td>
                     <td>{escapeHtml(s.phone)}</td>
-                    <td>{escapeHtml(s.event_name)}</td>
                     <td>{escapeHtml(s.unit_number)}</td>
                   </tr>
                 ))
