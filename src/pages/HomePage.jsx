@@ -99,21 +99,11 @@ export default function HomePage() {
               State-Level Hands-On Upcycling &amp; Recycling Training Camp
             </motion.p>
 
-            <motion.p 
-              className="eyebrow"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.4, ease: 'easeOut' }}
-              style={{ marginTop: '24px', color: 'var(--moss)' }}
-            >
-              Swachhata Action Plan &nbsp;·&nbsp; State-Level Camp
-            </motion.p>
-
             <motion.div 
               className="hero-chips"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: 0.35, duration: 0.5, ease: 'easeOut' }}
             >
               <span className="chip">
                 <svg className="ic" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="none" stroke="currentColor" strokeWidth="1.7"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/><circle cx="8" cy="14" r="1.1" fill="currentColor"/><circle cx="12" cy="14" r="1.1" fill="currentColor"/><circle cx="16" cy="14" r="1.1" fill="currentColor"/></svg>
@@ -132,7 +122,7 @@ export default function HomePage() {
               className="hero-actions"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55, duration: 0.4, ease: 'easeOut' }}
+              transition={{ delay: 0.45, duration: 0.4, ease: 'easeOut' }}
             >
               <Link className="btn btn-primary" to="/registration">Register Now</Link>
               <a className="btn btn-ghost" href="#camp">See camp details ↓</a>
@@ -141,7 +131,7 @@ export default function HomePage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.65, duration: 0.5, ease: 'easeOut' }}
+            transition={{ delay: 0.55, duration: 0.5, ease: 'easeOut' }}
           >
             <Countdown />
           </motion.div>
