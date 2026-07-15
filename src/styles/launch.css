@@ -1,0 +1,36 @@
+/* ==========================================================
+   PUNARVA 2K26 — Launch Page
+   ========================================================== */
+
+body.launch-theme{
+  background:linear-gradient(160deg,#0a1a10 0%,#0d2818 30%,#12362a 60%,#0d2818 100%);
+  height:100vh;display:flex;justify-content:center;align-items:center;
+  overflow:hidden;position:relative;
+}
+
+.launch-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100}
+
+.launch-card{background:rgba(255,253,248,.06);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:56px 40px;text-align:center;width:min(90vw,520px);box-shadow:0 30px 80px rgba(0,0,0,.4);z-index:10;transition:all 1.2s cubic-bezier(.16,1,.3,1);position:relative}
+
+.launch-logo-wrap{display:flex;justify-content:center;margin-bottom:28px}
+.launch-logo{width:300px;max-width:80%;height:auto;filter:drop-shadow(0 0 30px rgba(16,185,129,.25)) drop-shadow(0 0 60px rgba(245,158,11,.2));animation:launchPulse 3s ease-in-out infinite}
+
+.launch-title{font-family:var(--font-display);font-size:clamp(26px,5vw,40px);color:#faf7f0;font-weight:900;letter-spacing:.5px;margin-bottom:6px}
+.launch-sub{color:#10b981;font-family:var(--font-body);font-size:14px;text-transform:uppercase;letter-spacing:3px;font-weight:600;margin-bottom:36px;opacity:.9}
+
+.launch-btn{background:linear-gradient(135deg,#10b981,#059669);color:#fff!important;font-family:var(--font-body);font-weight:700;font-size:17px;letter-spacing:1px;text-transform:uppercase;padding:16px 42px;border:none;border-radius:50px;cursor:pointer;box-shadow:0 8px 30px rgba(16,185,129,.35);transition:all .3s;position:relative;overflow:hidden;z-index:5}
+.launch-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 14px 40px rgba(16,185,129,.45)}
+.launch-btn:active{transform:translateY(-1px) scale(.98)}
+
+.launching-state{transform:scale(.9) rotate(-1deg);opacity:0;filter:blur(15px)}
+.flash-overlay{position:fixed;inset:0;background:#faf7f0;z-index:1000;opacity:0;pointer-events:none;transition:opacity .8s ease-in-out}
+.flash-overlay.active{opacity:1}
+
+@keyframes launchPulse{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.03) translateY(-5px)}}
+
+.launch-bg-circle{position:absolute;border-radius:50%;pointer-events:none;z-index:1}
+.launch-circle-1{width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,.06),transparent 70%);top:-150px;left:-100px;animation:floatOne 10s ease-in-out infinite}
+.launch-circle-2{width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,.05),transparent 70%);bottom:-200px;right:-150px;animation:floatTwo 12s ease-in-out infinite}
+
+@keyframes floatOne{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,15px)}}
+@keyframes floatTwo{0%,100%{transform:translate(0,0)}50%{transform:translate(-25px,-20px)}}

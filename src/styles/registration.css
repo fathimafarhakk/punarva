@@ -1,0 +1,36 @@
+/* ==========================================================
+   PUNARVA 2K26 — Registration Page
+   ========================================================== */
+
+.registration-main{padding-top:140px;background:var(--cream);min-height:calc(100vh - 160px)}
+.registration-hero{padding:40px 5% 20px;background:transparent}
+.registration-form-section{padding:0 5% 80px;background:transparent}
+.registration-container{max-width:500px;margin:0 auto;width:100%}
+
+.registration-box{background:var(--paper);border-radius:var(--radius-lg);padding:44px 36px;box-shadow:var(--shadow-soft);position:relative;border:1px solid var(--cream-line);overflow:hidden}
+.registration-box::before{content:"";position:absolute;top:0;left:24px;right:24px;height:3px;background:linear-gradient(90deg,var(--emerald),var(--gold));border-radius:0 0 4px 4px}
+
+.registration-badge{display:flex;justify-content:center;margin-bottom:24px;color:var(--emerald)}
+.registration-badge svg{width:52px;height:52px}
+
+/* Form Controls */
+.registration-box .input-group{margin-bottom:20px;display:flex;flex-direction:column;gap:6px}
+.registration-box .input-group label{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--emerald);font-weight:700}
+.registration-box .input-group input{width:100%;padding:12px 16px;background:var(--cream);border:1.5px solid var(--cream-line);border-radius:12px;font-family:var(--font-body);font-size:15px;color:var(--ink);outline:none;transition:all .3s}
+.registration-box .input-group input:focus{border-color:var(--emerald);box-shadow:0 0 0 4px rgba(16,185,129,.1);background:var(--paper)}
+.registration-box .input-group input::placeholder{color:var(--ink-soft);opacity:.4}
+.registration-box button[type="submit"]{width:100%;justify-content:center;margin-top:8px;font-family:var(--font-body)}
+
+/* Status Modal */
+.status-modal-content{text-align:center}
+.status-modal-icon{margin:0 auto 18px}
+.status-modal-icon.success{background:var(--emerald-dim);color:var(--emerald)}
+.status-modal-icon.error{background:rgba(224,122,58,.1);color:var(--terracotta)}
+.status-modal-icon svg{width:24px;height:24px}
+.status-message{margin-top:12px;color:var(--ink-soft);font-size:15px;line-height:1.65}
+.status-buttons{justify-content:center;margin-top:26px}
+.status-buttons .btn{padding:12px 36px}
+
+/* Responsive */
+@media(max-width:768px){.registration-main{padding-top:110px}}
+@media(max-width:500px){.registration-box{padding:32px 22px}.registration-form-section{padding-bottom:50px}}

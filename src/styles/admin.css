@@ -1,0 +1,41 @@
+/* ==========================================================
+   PUNARVA 2K26 — Admin Login
+   ========================================================== */
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body.admin-login-body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(160deg,#0a1a10 0%,#0d2818 40%,#12362a 100%);
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;padding:40px;overflow:hidden;position:relative;color:#1a1a2e;
+}
+body.admin-login-body::before{content:"";position:absolute;width:600px;height:600px;top:-250px;right:-200px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.1),transparent 70%)}
+body.admin-login-body::after{content:"";position:absolute;width:500px;height:500px;bottom:-200px;left:-180px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.08),transparent 70%)}
+
+.login-container{width:100%;max-width:440px;position:relative;z-index:2}
+
+.login-card{background:rgba(255,253,248,.95);backdrop-filter:blur(16px);border-radius:24px;padding:48px 40px;box-shadow:0 20px 60px rgba(0,0,0,.3);border-top:3px solid #10b981;transition:.35s}
+.login-card:hover{transform:translateY(-3px);box-shadow:0 28px 70px rgba(0,0,0,.35)}
+
+.login-logo{display:flex;justify-content:center;margin-bottom:20px}
+.login-logo img{width:100px;height:auto}
+
+.login-card h1{font-family:'Fraunces',serif;font-size:40px;font-weight:700;text-align:center;color:#0d2818;margin-bottom:4px}
+.login-card h3{font-size:13px;text-transform:uppercase;letter-spacing:4px;font-weight:700;text-align:center;color:#10b981;margin-bottom:34px}
+
+.input-group{display:flex;flex-direction:column;margin-bottom:20px;gap:6px}
+.input-group label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#10b981;font-family:'Space Mono',monospace}
+.input-group input{height:52px;padding:0 16px;border-radius:12px;border:1.5px solid #e0d8c8;font-size:15px;font-family:'Inter',sans-serif;background:#faf7f0;transition:.3s;outline:none}
+.input-group input:focus{border-color:#10b981;box-shadow:0 0 0 4px rgba(16,185,129,.1)}
+.input-group input::placeholder{color:#999}
+
+.login-btn{width:100%;height:52px;border:none;border-radius:50px;cursor:pointer;background:linear-gradient(135deg,#10b981,#059669);color:white;font-size:15px;font-weight:700;transition:all .3s;margin-top:8px}
+.login-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(16,185,129,.3)}
+
+.error-message{height:22px;margin-top:18px;text-align:center;font-size:14px;font-weight:600;color:#e07a3a}
+
+.login-footer{margin-top:30px;text-align:center;line-height:1.8;font-size:13px;color:#64748b}
+.login-footer strong{display:block;font-size:16px;color:#0d2818;margin-bottom:4px;font-family:'Fraunces',serif}
+
+@media(max-width:768px){body.admin-login-body{padding:20px}.login-card{padding:36px 24px;border-radius:20px}.login-logo img{width:80px}.login-card h1{font-size:32px}.login-card h3{font-size:12px;letter-spacing:3px}.login-btn{height:48px}}
