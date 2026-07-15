@@ -175,17 +175,17 @@ export default function HomePage() {
           </div>
           <div className="org-grid">
             <div className="org-card">
-              <img src="/nss-logo.png" alt="NSS Logo" style={{ width: 48, height: 48, objectFit: 'contain', margin: '0 auto 16px', borderRadius: 8 }} />
+              <img src="/emea-logo.jpeg" alt="EMEA College Logo" className="org-seal-img" style={{ borderRadius: '6px' }} />
               <h4>Organized By</h4>
               <p>National Service Scheme (NSS)<br />EMEA College of Arts and Science, Kondotty<br />Unit No. 102 &amp; 115</p>
             </div>
             <div className="org-card">
-              <img src="/emea-logo.jpeg" alt="EMEA College" style={{ width: 48, height: 48, objectFit: 'contain', margin: '0 auto 16px', borderRadius: 8 }} />
+              <img src="/nss-logo.png" alt="NSS Logo" className="org-seal-img" />
               <h4>In Collaboration With</h4>
               <p>Regional Directorate of NSS, Thiruvananthapuram<br />State NSS Cell, Kerala</p>
             </div>
             <div className="org-card">
-              <img src="/logo.png" alt="PUNARVA" style={{ width: 48, height: 48, objectFit: 'contain', margin: '0 auto 16px' }} />
+              <img src="/logo.png" alt="PUNARVA Logo" className="org-seal-img" />
               <h4>Supported By</h4>
               <p>University of Calicut</p>
             </div>
