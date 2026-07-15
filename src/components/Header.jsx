@@ -24,7 +24,6 @@ export default function Header() {
           <img src="/nss-logo.png" alt="NSS Logo" className="header-logo nss" />
           <div className="logo-divider"></div>
           <Link className="brand" to="/" aria-label="PUNARVA 2K26 Home" onClick={closeMenu}>
-            <img src="/logo.png" alt="PUNARVA 2K26 Logo" className="brand-seal-img" />
             <div className="brand-text">
               <strong>PUNARVA</strong>
               <em>2K26</em>
