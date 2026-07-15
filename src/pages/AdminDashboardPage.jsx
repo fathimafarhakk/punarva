@@ -128,106 +128,127 @@ export default function AdminDashboardPage() {
         <button id="logoutBtn" className="logout-btn" onClick={logout}>Logout</button>
       </header>
 
-      {/* MAIN */}
-      <main className="dashboard-main">
-
-        {/* STATS */}
-        <section className="stats-grid">
-          {[
-            { label: 'Total Registrations', id: 'totalRegistrations', value: totalRegistrations },
-            { label: 'Total Colleges',       id: 'totalColleges',       value: totalColleges },
-            { label: 'Total NSS Units',      id: 'totalUnits',          value: totalUnits },
-            { label: "Today's Registrations",id: 'todayRegistrations',  value: todayCount },
-          ].map(s => (
-            <div className="stat-card" key={s.id}>
-              <h3>{s.label}</h3>
-              <span id={s.id}>{s.value}</span>
+      {/* MAIN CONTAINER */}
+      <main className="dashboard-grid">
+        {/* LEFT COLUMN: FILTERS & STATS */}
+        <aside className="dashboard-sidebar">
+          {/* SEARCH & FILTERS CARD */}
+          <div className="sidebar-card">
+            <h2>Search &amp; Filter</h2>
+            
+            <div className="filter-group">
+              <label>Search Query</label>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Name, College or Email"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+              />
             </div>
-          ))}
-        </section>
 
-        {/* TOOLBAR */}
-        <section className="toolbar">
-          <div className="toolbar-left">
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Search by Name, College or Email"
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-            />
+            <div className="filter-group">
+              <label>College</label>
+              <select
+                value={collegeFilter}
+                onChange={e => setCollegeFilter(e.target.value)}
+              >
+                <option value="">All Colleges</option>
+                {uniqueColleges.map(c => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+            </div>
 
-            <select
-              value={collegeFilter}
-              onChange={e => setCollegeFilter(e.target.value)}
-              className="filter-select"
-            >
-              <option value="">All Colleges</option>
-              {uniqueColleges.map(c => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-            </select>
+            <div className="filter-group">
+              <label>NSS Unit</label>
+              <select
+                value={unitFilter}
+                onChange={e => setUnitFilter(e.target.value)}
+              >
+                <option value="">All NSS Units</option>
+                {uniqueUnits.map(u => (
+                  <option key={u} value={String(u)}>Unit {u}</option>
+                ))}
+              </select>
+            </div>
 
-            <select
-              value={unitFilter}
-              onChange={e => setUnitFilter(e.target.value)}
-              className="filter-select"
-            >
-              <option value="">All NSS Units</option>
-              {uniqueUnits.map(u => (
-                <option key={u} value={String(u)}>Unit {u}</option>
-              ))}
-            </select>
+            <button id="downloadBtn" onClick={downloadCSV} className="action-btn-primary">
+              Download CSV Report
+            </button>
           </div>
 
-          <button id="downloadBtn" onClick={downloadCSV}>Download CSV</button>
-        </section>
+          {/* STATS STACK */}
+          <div className="stats-stack">
+            {[
+              { label: 'Total Registrations', id: 'totalRegistrations', value: totalRegistrations, border: 'var(--moss)' },
+              { label: 'Total Colleges',       id: 'totalColleges',       value: totalColleges, border: 'var(--gold)' },
+              { label: 'Total NSS Units',      id: 'totalUnits',          value: totalUnits, border: 'var(--moss)' },
+              { label: "Today's Registrations",id: 'todayRegistrations',  value: todayCount, border: 'var(--gold)' },
+            ].map(s => (
+              <div className="stat-card-compact" key={s.id} style={{ borderLeft: `4px solid ${s.border}` }}>
+                <h3>{s.label}</h3>
+                <span id={s.id}>{s.value}</span>
+              </div>
+            ))}
+          </div>
+        </aside>
 
-        {/* ERROR */}
-        {error && (
-          <div id="errorBanner" className="error-banner">{error}</div>
-        )}
+        {/* RIGHT COLUMN: REGISTRANT TABLE CARD */}
+        <section className="dashboard-content">
+          <div className="table-card">
+            <div className="table-card-header">
+              <h2>Registrant Database</h2>
+              <span className="badge">
+                Showing {filtered.length} of {registrations.length}
+              </span>
+            </div>
 
-        {/* TABLE */}
-        <section className="table-section">
-          <table id="registrationTable">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Full Name</th>
-                <th>College</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Unit No.</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-              {loading ? (
-                <tr>
-                  <td colSpan="6" style={{ textAlign: 'center', padding: '2rem', opacity: 0.5 }}>
-                    Loading registrations…
-                  </td>
-                </tr>
-              ) : filtered.length === 0 ? (
-                <tr>
-                  <td colSpan="6" style={{ textAlign: 'center', padding: '2rem', opacity: 0.5 }}>
-                    No registrations found.
-                  </td>
-                </tr>
-              ) : (
-                filtered.map((s, i) => (
-                  <tr key={s.id ?? i}>
-                    <td>{i + 1}</td>
-                    <td>{escapeHtml(s.full_name)}</td>
-                    <td>{escapeHtml(s.college)}</td>
-                    <td>{escapeHtml(s.email)}</td>
-                    <td>{escapeHtml(s.phone)}</td>
-                    <td>{escapeHtml(s.unit_number)}</td>
+            {error && (
+              <div id="errorBanner" className="error-banner">{error}</div>
+            )}
+
+            <div className="table-wrapper">
+              <table id="registrationTable">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>College</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Unit No.</th>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                </thead>
+                <tbody id="tableBody">
+                  {loading ? (
+                    <tr>
+                      <td colSpan="6" className="table-placeholder">
+                        Loading registrations…
+                      </td>
+                    </tr>
+                  ) : filtered.length === 0 ? (
+                    <tr>
+                      <td colSpan="6" className="table-placeholder">
+                        No registrations found.
+                      </td>
+                    </tr>
+                  ) : (
+                    filtered.map((s, i) => (
+                      <tr key={s.id ?? i}>
+                        <td>{i + 1}</td>
+                        <td className="font-semibold">{escapeHtml(s.full_name)}</td>
+                        <td>{escapeHtml(s.college)}</td>
+                        <td>{escapeHtml(s.email)}</td>
+                        <td className="font-mono">{escapeHtml(s.phone)}</td>
+                        <td>{escapeHtml(s.unit_number)}</td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </section>
       </main>
     </>
