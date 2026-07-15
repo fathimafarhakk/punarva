@@ -1201,10 +1201,17 @@ section{
 }
 
 .hero-logo {
-  max-width: 280px;
+  width: clamp(280px, 75vw, 480px);
   height: auto;
-  filter: drop-shadow(0 8px 24px rgba(28, 56, 41, 0.15));
+  max-height:550px;
+  filter: drop-shadow(0 12px 30px rgba(0, 39, 90, 0.15));
   animation: floatHeroLogo 6s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .hero-logo {
+    width: clamp(280px, 75vw, 480px);
+  }
 }
 
 @keyframes floatHeroLogo {

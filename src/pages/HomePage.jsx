@@ -77,7 +77,6 @@ export default function HomePage() {
                 src="/logo.png" 
                 alt="PUNARVA 2K26 Logo" 
                 className="hero-logo"
-                style={{ width: "clamp(280px, 48vw, 380px)", height: "auto", filter: "drop-shadow(0 12px 30px rgba(0, 39, 90, 0.15))" }} 
               />
             </motion.div>
             
