@@ -62,36 +62,30 @@ export default function HomePage() {
             </svg>
           </div>
           <div className="hero-inner">
+            <h1 className="sr-only" style={{ position: "absolute", width: "1px", height: "1px", padding: 0, margin: "-1px", overflow: "hidden", clip: "rect(0,0,0,0)", border: 0 }}>
+              Punarva 2K26 - State-Level NSS Camp
+            </h1>
             <motion.div 
               className="hero-logo-wrap"
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.75, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 100, damping: 15 }}
+              transition={{ type: "spring", stiffness: 100, damping: 14 }}
               whileHover={{ scale: 1.05 }}
-              style={{ display: "flex", justifyContent: "center", marginBottom: "26px" }}
+              style={{ display: "flex", justifyContent: "center", marginBottom: "34px" }}
             >
               <img 
                 src="/logo.png" 
-                alt="PUNARVA Logo" 
+                alt="PUNARVA 2K26 Logo" 
                 className="hero-logo"
-                style={{ width: "130px", height: "auto", filter: "drop-shadow(0 8px 24px rgba(0, 39, 90, 0.12))" }} 
+                style={{ width: "260px", height: "auto", filter: "drop-shadow(0 12px 30px rgba(0, 39, 90, 0.15))" }} 
               />
             </motion.div>
-            
-            <motion.h1 
-              className="hero-title"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.5, ease: 'easeOut' }}
-            >
-              Punarva <span>2K26</span>
-            </motion.h1>
             
             <motion.p 
               className="hero-tagline"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: 0.15, duration: 0.5, ease: 'easeOut' }}
             >
               Learn it. Fix it. Reuse it. Recycle it.
             </motion.p>
@@ -100,7 +94,7 @@ export default function HomePage() {
               className="hero-desc"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: 0.25, duration: 0.5, ease: 'easeOut' }}
             >
               State-Level Hands-On Upcycling &amp; Recycling Training Camp
             </motion.p>
@@ -109,7 +103,7 @@ export default function HomePage() {
               className="eyebrow"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.4, ease: 'easeOut' }}
+              transition={{ delay: 0.35, duration: 0.4, ease: 'easeOut' }}
               style={{ marginTop: '24px', color: 'var(--moss)' }}
             >
               Swachhata Action Plan &nbsp;·&nbsp; State-Level Camp
@@ -119,7 +113,7 @@ export default function HomePage() {
               className="hero-chips"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: 0.45, duration: 0.5, ease: 'easeOut' }}
             >
               <span className="chip">
                 <svg className="ic" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="none" stroke="currentColor" strokeWidth="1.7"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/><circle cx="8" cy="14" r="1.1" fill="currentColor"/><circle cx="12" cy="14" r="1.1" fill="currentColor"/><circle cx="16" cy="14" r="1.1" fill="currentColor"/></svg>
@@ -138,7 +132,7 @@ export default function HomePage() {
               className="hero-actions"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.4, ease: 'easeOut' }}
+              transition={{ delay: 0.55, duration: 0.4, ease: 'easeOut' }}
             >
               <Link className="btn btn-primary" to="/registration">Register Now</Link>
               <a className="btn btn-ghost" href="#camp">See camp details ↓</a>
@@ -147,7 +141,7 @@ export default function HomePage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7, duration: 0.5, ease: 'easeOut' }}
+            transition={{ delay: 0.65, duration: 0.5, ease: 'easeOut' }}
           >
             <Countdown />
           </motion.div>
