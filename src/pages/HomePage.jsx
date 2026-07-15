@@ -10,10 +10,9 @@ import EventModal from '../components/EventModal';
 const EVENTS = [
   { key: 'led',      num: '01', icon: 'bulb', title: 'LED Bulb Repair', desc: 'Learn to test, rebuild, and restore discarded LED bulbs and drivers.' },
   { key: 'tube',     num: '02', icon: 'tube', title: 'Tube Light Repair', desc: 'Reassemble and troubleshoot electronic chokes and energy-saving tube systems.' },
-  { key: 'tiles',    num: '03', icon: 'vase', title: 'Mosaic Tile Art', desc: 'Upcycle broken ceramic tiles into stunning textured decorative vases.' },
-  { key: 'umbrella', num: '04', icon: 'fish', title: 'Umbrella Sheet Bag', desc: 'Transform waste umbrella nylon fabric into durable waterproof fish bags.' },
-  { key: 'saree',    num: '05', icon: 'bag',  title: 'Saree Carry Bag', desc: 'Stitch and craft discarded traditional sarees into eco-friendly carry bags.' },
-  { key: 'fan',      num: '06', icon: 'fan',  title: 'BLDC Fan Conversion', desc: 'Convert energy-inefficient AC fans to modern, smart BLDC motors.' },
+  { key: 'umbrella', num: '03', icon: 'fish', title: 'Umbrella Sheet Bag', desc: 'Transform waste umbrella nylon fabric into durable waterproof fish bags.' },
+  { key: 'saree',    num: '04', icon: 'bag',  title: 'Saree Carry Bag', desc: 'Stitch and craft discarded traditional sarees into eco-friendly carry bags.' },
+  { key: 'fan',      num: '05', icon: 'fan',  title: 'BLDC Fan Conversion', desc: 'Convert energy-inefficient AC fans to modern, smart BLDC motors.' },
 ];
 
 const SVG_ICONS = {
