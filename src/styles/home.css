@@ -631,8 +631,9 @@ section {
    ========================================================== */
 
 .camp-section {
-  background: var(--forest);
-  background-image: radial-gradient(circle at 10% 90%, rgba(200, 146, 46, .08), transparent 60%);
+  background: linear-gradient(135deg, var(--moss) 0%, var(--forest) 100%);
+  text-align: center;
+  color: var(--kraft);
 }
 
 .camp-grid {
