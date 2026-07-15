@@ -741,10 +741,11 @@ section{
 }
 
 .org-seal-img {
+  display: block;
+  margin: 0 auto 20px;
   height: 60px;
   width: auto;
   object-fit: contain;
-  margin-bottom: 20px;
 }
 
 .org-card h4{
