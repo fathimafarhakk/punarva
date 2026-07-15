@@ -45,9 +45,9 @@ export default function HomePage() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
     >
       <div className="grain" />
       <SplashScreen />
@@ -62,16 +62,44 @@ export default function HomePage() {
             </svg>
           </div>
           <div className="hero-inner">
-            <div className="hero-logo-wrap">
-              <img src="/logo.png" alt="PUNARVA Logo" className="hero-logo" />
-            </div>
-            <p className="eyebrow">Swachhata Action Plan &nbsp;·&nbsp; State-Level Camp</p>
-            <h1 className="hero-title">Punarva <span>2K26</span></h1>
-            <p className="hero-tagline">Learn it. Fix it. Reuse it. Recycle it.</p>
-            <p className="hero-desc">
+            <motion.p 
+              className="eyebrow"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.4, ease: 'easeOut' }}
+            >
+              Swachhata Action Plan &nbsp;·&nbsp; State-Level Camp
+            </motion.p>
+            <motion.h1 
+              className="hero-title"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
+            >
+              Punarva <span>2K26</span>
+            </motion.h1>
+            <motion.p 
+              className="hero-tagline"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5, ease: 'easeOut' }}
+            >
+              Learn it. Fix it. Reuse it. Recycle it.
+            </motion.p>
+            <motion.p 
+              className="hero-desc"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5, ease: 'easeOut' }}
+            >
               State-Level Hands-On Upcycling &amp; Recycling Training Camp
-            </p>
-            <div className="hero-chips">
+            </motion.p>
+            <motion.div 
+              className="hero-chips"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5, ease: 'easeOut' }}
+            >
               <span className="chip">
                 <svg className="ic" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="none" stroke="currentColor" strokeWidth="1.7"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/><circle cx="8" cy="14" r="1.1" fill="currentColor"/><circle cx="12" cy="14" r="1.1" fill="currentColor"/><circle cx="16" cy="14" r="1.1" fill="currentColor"/></svg>
                 24–26 July 2026
@@ -84,78 +112,175 @@ export default function HomePage() {
                 <svg className="ic" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" d="M5 19c-1-7 2-13 14-14 1 12-6 15-14 14Z"/><path d="M6 18c4-5 8-8 12-13" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round"/></svg>
                 Swachhata Action Plan
               </span>
-            </div>
-            <div className="hero-actions">
+            </motion.div>
+            <motion.div 
+              className="hero-actions"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.4, ease: 'easeOut' }}
+            >
               <Link className="btn btn-primary" to="/registration">Register Now</Link>
               <a className="btn btn-ghost" href="#camp">See camp details ↓</a>
-            </div>
+            </motion.div>
           </div>
-          <Countdown />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.5, ease: 'easeOut' }}
+          >
+            <Countdown />
+          </motion.div>
         </section>
 
         {/* ===== ABOUT ===== */}
-        <section className="about-section" id="about">
+        <motion.section 
+          className="about-section" 
+          id="about"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="section-head">
             <p className="eyebrow eyebrow-dark">About the Camp</p>
             <h2>Two units, one commitment to a cleaner Kerala</h2>
           </div>
-          <div className="about-grid">
-            <article className="about-card torn-top">
+          <motion.div 
+            className="about-grid"
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { staggerChildren: 0.15 } }
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            <motion.article 
+              className="about-card torn-top"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 85 } }
+              }}
+            >
               <span className="about-icon">
                 <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M9.5 3.5 6 9.8m0 0-2.6-1M6 9.8l3 1.9M17.6 6.2l3.9 5.5m0 0-3 .7m3-.7-1.6 2.9M13 20.5H6.4a1 1 0 0 1-.9-1.5l2-3.5m5.5 5-2.2-2.6m2.2 2.6 2.4-2.4M17.3 20.5h1.5a2 2 0 0 0 1.7-3l-1.7-3"/></svg>
               </span>
               <h3>About Punarva</h3>
               <p>The NSS Units <strong>102 &amp; 115</strong> of <strong>EMEA College of Arts and Science, Kondotty</strong> present <strong>"PUNARVA 2K26"</strong> — a State-Level Recycling and Upcycling Hands-on Training Camp organised under the Swachhata Action Plan.</p>
               <p>The camp gives NSS volunteers practical training in recycling, upcycling, repair and sustainable waste management — building technical skill, environmental responsibility, creativity and a spirit of community service.</p>
-            </article>
-            <article className="about-card torn-top">
+            </motion.article>
+            <motion.article 
+              className="about-card torn-top"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 85 } }
+              }}
+            >
               <span className="about-icon">
                 <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" d="m12 3 2.4 1.7 2.9-.2 1 2.7 2.5 1.5-.7 2.9.7 2.9-2.5 1.5-1 2.7-2.9-.2L12 20l-2.4-1.7-2.9.2-1-2.7-2.5-1.5.7-2.9-.7-2.9 2.5-1.5 1-2.7 2.9.2L12 3Z"/><circle cx="12" cy="11" r="2.4" fill="currentColor"/></svg>
               </span>
               <h3>About NSS EMEA</h3>
               <p>NSS EMEA College of Arts &amp; Science, Kondotty is a socially committed unit promoting community service, environmental conservation, youth leadership and social awareness.</p>
               <p>Through innovative programmes and outreach initiatives, it nurtures responsible citizenship, sustainable development and a lasting spirit of service among students.</p>
-            </article>
-          </div>
-        </section>
+            </motion.article>
+          </motion.div>
+        </motion.section>
 
         {/* ===== CAMP DETAILS ===== */}
-        <section className="camp-section" id="camp">
+        <motion.section 
+          className="camp-section" 
+          id="camp"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="section-head light">
             <p className="eyebrow">Camp Details</p>
             <h2>What, where &amp; when</h2>
             <p className="section-sub">Everything you need to plan your trip to Kondotty.</p>
           </div>
-          <div className="camp-grid">
-            <div className="camp-card">
+          <motion.div 
+            className="camp-grid"
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { staggerChildren: 0.12 } }
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            <motion.div 
+              className="camp-card"
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+              }}
+            >
               <span className="camp-icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="none" stroke="currentColor" strokeWidth="1.7"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/><circle cx="8" cy="14" r="1.1" fill="currentColor"/><circle cx="12" cy="14" r="1.1" fill="currentColor"/><circle cx="16" cy="14" r="1.1" fill="currentColor"/></svg></span>
               <h4>Camp Dates</h4>
               <p>24 – 26 July 2026<br /><span className="muted">Friday to Sunday</span></p>
-            </div>
-            <div className="camp-card">
+            </motion.div>
+            <motion.div 
+              className="camp-card"
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+              }}
+            >
               <span className="camp-icon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" d="M12 21s7-7.2 7-12.5A7 7 0 0 0 5 8.5C5 13.8 12 21 12 21Z"/><circle cx="12" cy="8.5" r="2.6" fill="currentColor"/></svg></span>
               <h4>Venue</h4>
               <p>EMEA College of Arts and Science<br /><span className="muted">Kondotty, Malappuram</span></p>
-            </div>
-            <div className="camp-card">
+            </motion.div>
+            <motion.div 
+              className="camp-card"
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+              }}
+            >
               <span className="camp-icon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" d="M5 19c-1-7 2-13 14-14 1 12-6 15-14 14Z"/><path d="M6 18c4-5 8-8 12-13" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round"/></svg></span>
               <h4>Theme</h4>
               <p>Under the<br /><span className="muted">Swachhata Action Plan</span></p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           <p className="camp-desc">NSS volunteers from across Kerala come together to learn practical skills in recycling, repair, upcycling and sustainable waste management — while contributing towards building a greener future.</p>
-        </section>
+        </motion.section>
 
         {/* ===== ACTIVITIES ===== */}
-        <section className="events-section" id="activities">
+        <motion.section 
+          className="events-section" 
+          id="activities"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="section-head">
             <p className="eyebrow eyebrow-dark">Camp Activities</p>
             <h2>Learn · Repair · Reuse · Recycle</h2>
             <p className="section-sub">Six hands-on sessions, all on 24 July 2026 · tap a card for the guidelines.</p>
           </div>
-          <div className="event-grid">
+          <motion.div 
+            className="event-grid"
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+          >
             {EVENTS.map(ev => (
-              <button key={ev.key} className="event-card" onClick={() => setActiveEvent(ev.key)}>
+              <motion.button 
+                key={ev.key} 
+                className="event-card" 
+                onClick={() => setActiveEvent(ev.key)}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+                }}
+              >
                 <span className="event-num">{ev.num}</span>
                 <span className="event-icon">
                   <svg viewBox="0 0 24 24">{SVG_ICONS[ev.icon]}</svg>
@@ -169,13 +294,19 @@ export default function HomePage() {
                   </span>
                   <span className="event-action">Guidelines →</span>
                 </div>
-              </button>
+              </motion.button>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* ===== REGISTER CTA ===== */}
-        <section className="register-band">
+        <motion.section 
+          className="register-band"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="register-inner">
             <span className="register-icon">
               <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M9.5 3.5 6 9.8m0 0-2.6-1M6 9.8l3 1.9M17.6 6.2l3.9 5.5m0 0-3 .7m3-.7-1.6 2.9M13 20.5H6.4a1 1 0 0 1-.9-1.5l2-3.5m5.5 5-2.2-2.6m2.2 2.6 2.4-2.4M17.3 20.5h1.5a2 2 0 0 0 1.7-3l-1.7-3"/></svg>
@@ -184,29 +315,63 @@ export default function HomePage() {
             <p>Bring your NSS ID and enthusiasm. Everything else, we'll teach you.</p>
             <Link className="btn btn-primary btn-lg" to="/registration">Register Now</Link>
           </div>
-        </section>
+        </motion.section>
 
         {/* ===== ORGANIZERS ===== */}
-        <section className="organizers" id="organizers">
+        <motion.section 
+          className="organizers" 
+          id="organizers"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="section-head">
             <p className="eyebrow eyebrow-dark">Partners</p>
             <h2>Organized &amp; Supported By</h2>
           </div>
-          <div className="org-grid">
-            <div className="org-card">
+          <motion.div 
+            className="org-grid"
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { staggerChildren: 0.12 } }
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            <motion.div 
+              className="org-card"
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+              }}
+            >
               <h4>Organized By</h4>
               <p>National Service Scheme (NSS)<br />EMEA College Units 102 &amp; 115</p>
-            </div>
-            <div className="org-card">
+            </motion.div>
+            <motion.div 
+              className="org-card"
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+              }}
+            >
               <h4>Host Institution</h4>
               <p>EMEA College of Arts &amp; Science<br />Affiliated with University of Calicut</p>
-            </div>
-            <div className="org-card">
+            </motion.div>
+            <motion.div 
+              className="org-card"
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+              }}
+            >
               <h4>State-Level Camp</h4>
               <p>PUNARVA 2K26<br />Under the Swachhata Action Plan (SAP)</p>
-            </div>
-          </div>
-        </section>
+            </motion.div>
+          </motion.div>
+        </motion.section>
       </main>
 
       <Footer />
