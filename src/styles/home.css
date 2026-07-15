@@ -396,7 +396,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .timer{
   display:flex;
   justify-content:center;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
   gap:18px;
 }
 .timer-cell{

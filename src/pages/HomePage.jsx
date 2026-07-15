@@ -62,38 +62,59 @@ export default function HomePage() {
             </svg>
           </div>
           <div className="hero-inner">
-            <motion.p 
-              className="eyebrow"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.4, ease: 'easeOut' }}
+            <motion.div 
+              className="hero-logo-wrap"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 100, damping: 15 }}
+              whileHover={{ scale: 1.05 }}
+              style={{ display: "flex", justifyContent: "center", marginBottom: "26px" }}
             >
-              Swachhata Action Plan &nbsp;·&nbsp; State-Level Camp
-            </motion.p>
+              <img 
+                src="/logo.png" 
+                alt="PUNARVA Logo" 
+                className="hero-logo"
+                style={{ width: "130px", height: "auto", filter: "drop-shadow(0 8px 24px rgba(0, 39, 90, 0.12))" }} 
+              />
+            </motion.div>
+            
             <motion.h1 
               className="hero-title"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: 0.15, duration: 0.5, ease: 'easeOut' }}
             >
               Punarva <span>2K26</span>
             </motion.h1>
+            
             <motion.p 
               className="hero-tagline"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: 0.25, duration: 0.5, ease: 'easeOut' }}
             >
               Learn it. Fix it. Reuse it. Recycle it.
             </motion.p>
+            
             <motion.p 
               className="hero-desc"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: 0.35, duration: 0.5, ease: 'easeOut' }}
             >
               State-Level Hands-On Upcycling &amp; Recycling Training Camp
             </motion.p>
+
+            <motion.p 
+              className="eyebrow"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.4, ease: 'easeOut' }}
+              style={{ marginTop: '24px', color: 'var(--moss)' }}
+            >
+              Swachhata Action Plan &nbsp;·&nbsp; State-Level Camp
+            </motion.p>
+
             <motion.div 
               className="hero-chips"
               initial={{ opacity: 0, y: 12 }}
