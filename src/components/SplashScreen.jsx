@@ -43,17 +43,27 @@ export default function SplashScreen() {
   return (
     <div className={`splash-screen${fadeOut ? ' fade-out' : ''}`} id="splashScreen">
       <div className="splash-inner">
-        <img src="/logo.png" alt="PUNARVA Logo" className="splash-logo" />
-        <p style={{
-          fontFamily: "'Space Mono', monospace",
-          fontSize: '11px',
-          letterSpacing: '4px',
-          textTransform: 'uppercase',
-          color: 'rgba(16,185,129,.7)',
-          marginTop: '20px',
-        }}>
-          NSS State Camp 2K26
-        </p>
+        <svg className="splash-emblem" viewBox="0 0 300 220" aria-hidden="true">
+          <circle className="ripple ripple-1" cx="150" cy="190" r="30" />
+          <circle className="ripple ripple-2" cx="150" cy="190" r="30" />
+          <circle className="ripple ripple-3" cx="150" cy="190" r="30" />
+          <line className="horizon" x1="45" y1="190" x2="255" y2="190" />
+          <path
+            className="sun-arc"
+            d="M 95 190 A 55 55 0 0 1 205 190"
+            fill="none"
+          />
+        </svg>
+
+        {/* <img src="/logo.png" alt="PUNARVA Logo" className="splash-logo" /> */}
+
+        <h1 className="splash-word">Punarva</h1>
+
+        <p className="splash-label">NSS State Camp &middot; 2K26</p>
+
+        <div className="splash-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
       </div>
     </div>
   );
