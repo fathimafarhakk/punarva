@@ -375,11 +375,15 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 /* countdown */
 .countdown-strip{
   position:relative;
-  margin:70px -6% 0;
-  background:var(--forest);
-  padding:38px 6% 44px;
+  margin:50px auto 0;
+  max-width:760px;
+  width:100%;
+  background:var(--forest-2);
+  padding:30px 24px 36px;
   text-align:center;
-  border-top:2px solid var(--gold);
+  border-radius:24px;
+  border:2.5px solid var(--gold);
+  box-shadow:var(--shadow-lift);
 }
 .countdown-label{
   font-family:var(--font-mono);
@@ -1050,7 +1054,7 @@ section{
   }
 
   .hero{padding-top:130px;}
-  .countdown-strip{margin-top:50px;}
+  .countdown-strip{margin:30px auto 0; padding: 24px 16px 28px; width: 100%;}
   .timer-cell{width:76px;padding:14px 0 10px;}
   .timer-cell span{font-size:28px;}
 
