@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../utils/supabase';
 import '../styles/admin.css';
 
 export default function AdminLoginPage() {
   const [email,    setEmail]    = useState('');
   const [password, setPassword] = useState('');
   const [error,    setError]    = useState('');
+  const [loading,  setLoading]  = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,18 +17,32 @@ export default function AdminLoginPage() {
     };
   }, []);
 
-  const ADMIN_EMAIL    = 'admin@punarva.com';
-  const ADMIN_PASSWORD = 'punarva123';
-
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const cleanEmail = email.trim();
     const cleanPassword = password.trim();
-    if (cleanEmail === ADMIN_EMAIL && cleanPassword === ADMIN_PASSWORD) {
+    
+    setError('');
+    setLoading(true);
+
+    try {
+      // 1. Attempt login via Supabase Auth
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email: cleanEmail,
+        password: cleanPassword,
+      });
+
+      if (authError) {
+        throw authError;
+      }
+
+      // Successful Supabase Auth
       sessionStorage.setItem('adminLoggedIn', 'true');
       navigate('/admin/dashboard');
-    } else {
-      setError('Invalid Email or Password');
+    } catch (err) {
+      setError(err.message || 'Invalid Email or Password');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,10 +62,11 @@ export default function AdminLoginPage() {
             <input
               type="email"
               id="email"
-              placeholder="Enter admin email"
+              placeholder="admin@gmail.com"
               value={email}
               onChange={e => { setEmail(e.target.value); setError(''); }}
               required
+              disabled={loading}
             />
           </div>
 
@@ -62,10 +79,13 @@ export default function AdminLoginPage() {
               value={password}
               onChange={e => { setPassword(e.target.value); setError(''); }}
               required
+              disabled={loading}
             />
           </div>
 
-          <button type="submit" className="login-btn">Login to Dashboard</button>
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? 'Logging in...' : 'Login to Dashboard'}
+          </button>
         </form>
 
         {error && <p id="error" className="error-message">{error}</p>}

@@ -5,9 +5,46 @@ import RegistrationPage from './pages/RegistrationPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 
+import { useState, useEffect } from 'react';
+import { supabase } from './utils/supabase';
+
 function ProtectedRoute({ children }) {
-  const isLoggedIn = sessionStorage.getItem('adminLoggedIn') === 'true';
-  return isLoggedIn ? children : <Navigate to="/admin" replace />;
+  const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      const isSessionStorageLoggedIn = sessionStorage.getItem('adminLoggedIn') === 'true';
+      if (session || isSessionStorageLoggedIn) {
+        setAuthenticated(true);
+      } else {
+        setAuthenticated(false);
+      }
+      setLoading(false);
+    };
+    checkUser();
+  }, []);
+
+  if (loading) {
+    return (
+      <div style={{
+        background: '#f3ead9',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'Space Grotesk, sans-serif',
+        color: '#00275a',
+        fontSize: '18px',
+        fontWeight: '600'
+      }}>
+        Verifying Session...
+      </div>
+    );
+  }
+
+  return authenticated ? children : <Navigate to="/admin" replace />;
 }
 
 export default function App() {

@@ -86,8 +86,9 @@ export default function AdminDashboardPage() {
   };
 
   // ── Logout ─────────────────────────────────────────────────
-  const logout = () => {
+  const logout = async () => {
     sessionStorage.removeItem('adminLoggedIn');
+    await supabase.auth.signOut();
     navigate('/admin');
   };
 
