@@ -21,10 +21,7 @@ export default function RegistrationPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { error } = await supabase.from('punarva').insert([{
-        ...form,
-        event_name: 'Punarva',
-      }]);
+      const { error } = await supabase.from('punarva').insert([form]);
       if (error) throw error;
       setModal({
         success: true,
