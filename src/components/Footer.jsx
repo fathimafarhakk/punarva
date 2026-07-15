@@ -5,15 +5,9 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-container">
         
-        {/* BRAND & LOGOS COLUMN */}
+        {/* BRAND COLUMN */}
         <div className="footer-col brand-col">
-          <div className="footer-logos-row">
-            <img src="/emea-logo.jpeg" alt="EMEA College" className="footer-logo-img emea" />
-            <img src="/nss-logo.png" alt="NSS" className="footer-logo-img nss" />
-            <div className="footer-logo-divider"></div>
-            <img src="/logo.png" alt="Punarva" className="footer-logo-img punarva" />
-          </div>
-          <div className="footer-brand-meta">
+          <div className="footer-brand-meta" style={{ marginTop: 0 }}>
             <h3>PUNARVA 2K26</h3>
             <p className="footer-tag">State-Level NSS Camp</p>
             <p className="footer-desc">

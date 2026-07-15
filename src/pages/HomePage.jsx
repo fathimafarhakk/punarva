@@ -347,6 +347,7 @@ export default function HomePage() {
                 show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
               }}
             >
+              <img src="/nss-logo.png" alt="NSS Logo" className="org-seal-img" style={{ height: '50px', objectFit: 'contain', marginBottom: '16px' }} />
               <h4>Organized By</h4>
               <p>National Service Scheme (NSS)<br />EMEA College Units 102 &amp; 115</p>
             </motion.div>
@@ -357,6 +358,7 @@ export default function HomePage() {
                 show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
               }}
             >
+              <img src="/emea-logo.jpeg" alt="EMEA College Logo" className="org-seal-img" style={{ height: '50px', objectFit: 'contain', marginBottom: '16px', borderRadius: '6px' }} />
               <h4>Host Institution</h4>
               <p>EMEA College of Arts &amp; Science<br />Affiliated with University of Calicut</p>
             </motion.div>
@@ -367,6 +369,7 @@ export default function HomePage() {
                 show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
               }}
             >
+              <img src="/logo.png" alt="PUNARVA Logo" className="org-seal-img" style={{ height: '50px', objectFit: 'contain', marginBottom: '16px' }} />
               <h4>State-Level Camp</h4>
               <p>PUNARVA 2K26<br />Under the Swachhata Action Plan (SAP)</p>
             </motion.div>
