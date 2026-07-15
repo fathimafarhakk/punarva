@@ -49,9 +49,7 @@ export default function HomePage() {
             <h1 className="hero-title">Punarva <span>2K26</span></h1>
             <p className="hero-tagline">Learn it. Fix it. Reuse it. Recycle it.</p>
             <p className="hero-desc">
-              A hands-on training camp where NSS volunteers from across Kerala pick up real, practical
-              skills in repair, recycling and upcycling — and take home a little more responsibility
-              for the planet than they arrived with.
+              State-Level Hands-On Upcycling &amp; Recycling Training Camp
             </p>
             <div className="hero-chips">
               <span className="chip">

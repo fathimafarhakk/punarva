@@ -15,8 +15,11 @@ export default function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`site-header fade-up-content${scrolled ? ' scrolled' : ''}`} id="siteHeader">
-      <div className="nav-wrap">
+    <>
+      {menuOpen && <div className="nav-backdrop" onClick={closeMenu}></div>}
+
+      <header className={`site-header fade-up-content${scrolled ? ' scrolled' : ''}`} id="siteHeader">
+        <div className="nav-wrap">
         <div className="header-logos">
           <img src="/emea-logo.jpeg" alt="EMEA College Logo" className="header-logo emea" />
           <img src="/nss-logo.png" alt="NSS Logo" className="header-logo nss" />
@@ -49,5 +52,6 @@ export default function Header() {
         </nav>
       </div>
     </header>
+    </>
   );
 }

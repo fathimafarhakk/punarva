@@ -2,37 +2,72 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="site-footer fade-up-content">
-      <div className="footer-inner">
-        <div className="footer-brand">
-          <span className="brand-seal small">
-            <img src="/logo.png" alt="PUNARVA Logo" style={{ height: '100%', width: '100%', objectFit: 'contain' }} />
-          </span>
-          <div>
-            <strong>PUNARVA 2K26</strong>
-            <p>NSS State Camp · EMEA College, Kondotty</p>
+    <footer className="site-footer">
+      <div className="footer-container">
+        
+        {/* BRAND & LOGOS COLUMN */}
+        <div className="footer-col brand-col">
+          <div className="footer-logos-row">
+            <img src="/emea-logo.jpeg" alt="EMEA College" className="footer-logo-img emea" />
+            <img src="/nss-logo.png" alt="NSS" className="footer-logo-img nss" />
+            <div className="footer-logo-divider"></div>
+            <img src="/logo.png" alt="Punarva" className="footer-logo-img punarva" />
+          </div>
+          <div className="footer-brand-meta">
+            <h3>PUNARVA 2K26</h3>
+            <p className="footer-tag">State-Level NSS Camp</p>
+            <p className="footer-desc">
+              Empowering youth through hands-on technical skills, sustainable upcycling, and eco-friendly responsibility.
+            </p>
           </div>
         </div>
-        <nav className="footer-links">
-          <a href="/#about">About</a>
-          <a href="/#camp">Camp Details</a>
-          <a href="/#activities">Activities</a>
-          <a href="/#organizers">Organizers</a>
-          <Link to="/registration">Register</Link>
-        </nav>
+
+        {/* NAVIGATION COLUMN */}
+        <div className="footer-col links-col">
+          <h4>Navigation</h4>
+          <nav className="footer-nav-list">
+            <a href="/#about">About the Camp</a>
+            <a href="/#camp">Dates &amp; Venue</a>
+            <a href="/#activities">Camp Activities</a>
+            <a href="/#organizers">Organizers</a>
+            <Link to="/registration">Register Now</Link>
+          </nav>
+        </div>
+
+        {/* ORGANIZERS COLUMN */}
+        <div className="footer-col contact-col">
+          <h4>Organized By</h4>
+          <p className="footer-org-text">
+            <strong>National Service Scheme (NSS)</strong><br />
+            EMEA College of Arts and Science, Kondotty<br />
+            NSS Units 102 &amp; 115
+          </p>
+          <div className="sap-badge">
+            Swachhata Action Plan
+          </div>
+        </div>
+
       </div>
-      <p className="footer-note">
-        Under the Swachhata Action Plan · National Service Scheme, EMEA College of Arts and Science,
-        Kondotty · Crafted by{' '}
-        <a
-          href="https://www.linkedin.com/in/fathima-farha-kk-a76940370/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ textDecoration: 'underline', color: '#10b981' }}
-        >
-          Fathima Farha KK
-        </a>
-      </p>
+
+      {/* COPYRIGHT & CREDITS BOTTOM BAR */}
+      <div className="footer-bottom">
+        <div className="footer-bottom-inner">
+          <p className="copyright-text">
+            &copy; {new Date().getFullYear()} PUNARVA EMEA. All rights reserved.
+          </p>
+          <p className="credits-text">
+            Crafted with heart by{' '}
+            <a
+              href="https://www.linkedin.com/in/fathima-farha-kk-a76940370/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="credit-link"
+            >
+              Fathima Farha KK
+            </a>
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }
