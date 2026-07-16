@@ -46,6 +46,7 @@ export default function Header() {
           <Link to="/#camp" onClick={closeMenu}>Camp Details</Link>
           <Link to="/#activities" onClick={closeMenu}>Activities</Link>
           <Link to="/#organizers" onClick={closeMenu}>Organizers</Link>
+          <a href="/brochure.pdf" download="PUNARVA_2026_Brochure.pdf" onClick={closeMenu}>Brochure</a>
           <Link className="nav-cta" to="/registration" onClick={closeMenu}>Register Now</Link>
         </nav>
       </div>

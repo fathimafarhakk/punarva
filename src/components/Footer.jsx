@@ -24,6 +24,7 @@ export default function Footer() {
             <Link to="/#camp">Dates &amp; Venue</Link>
             <Link to="/#activities">Camp Activities</Link>
             <Link to="/#organizers">Organizers</Link>
+            <a href="/brochure.pdf" download="PUNARVA_2026_Brochure.pdf">Download Brochure</a>
             <Link to="/registration">Register Now</Link>
           </nav>
         </div>

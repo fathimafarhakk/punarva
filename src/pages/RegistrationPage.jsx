@@ -7,7 +7,7 @@ import StatusModal from '../components/StatusModal';
 import { supabase } from '../utils/supabase';
 import '../styles/registration.css';
 
-const INITIAL = { full_name: '', university: '', college: '', unit_number: '', email: '', phone: '', po_name: '', po_phone: '' };
+const INITIAL = { full_name: '', university: '', college: '', unit_number: '', email: '', phone: '', po_name: '', po_phone: '', food_preference: '' };
 
 const UNIVERSITIES = [
   'Calicut University',
@@ -85,6 +85,9 @@ export default function RegistrationPage() {
             <p className="eyebrow eyebrow-dark">State Level Camp</p>
             <h2>Punarva 2K26 Registration</h2>
             <p className="section-sub">NSS State Camp at EMEA College, Kondotty · 24–26 July 2026</p>
+            <p className="section-sub" style={{ marginTop: '8px', fontSize: '14.5px', fontWeight: '600', color: 'var(--moss)' }}>
+              In Collaboration with Regional Directorate of NSS, Thiruvananthapuram &amp; State NSS Cell, Kerala
+            </p>
           </div>
         </section>
 
@@ -99,13 +102,14 @@ export default function RegistrationPage() {
               <form id="registrationForm" onSubmit={handleSubmit}>
                 {[
                   { id: 'full_name',    label: 'Full Name',             type: 'text',   placeholder: 'Enter your full name' },
-                  { id: 'university',   label: 'University/Directorate', type: 'select', placeholder: 'Select University/Directorate' },
+                  { id: 'university',   label: 'University/Directorate', type: 'select', placeholder: 'Select University/Directorate', options: UNIVERSITIES },
                   { id: 'college',      label: 'College',               type: 'text',   placeholder: 'Enter your college name' },
                   { id: 'unit_number',  label: 'Unit Number',           type: 'text',   placeholder: 'Enter your unit number' },
                   { id: 'po_name',      label: 'Program Officer Name',  type: 'text',   placeholder: 'Enter Program Officer name' },
                   { id: 'po_phone',     label: 'Program Officer Mobile Number', type: 'tel', placeholder: 'Enter 10-digit mobile number', pattern: '[0-9]{10}' },
                   { id: 'email',        label: 'Email Address',         type: 'email',  placeholder: 'Enter your email address' },
                   { id: 'phone',        label: 'Phone Number',          type: 'tel',    placeholder: 'Enter 10-digit phone number', pattern: '[0-9]{10}' },
+                  { id: 'food_preference', label: 'Food Preference',    type: 'select', placeholder: 'Select Food Preference', options: ['Veg', 'Non-Veg'] },
                 ].map(f => (
                   <div className="input-group" key={f.id}>
                     <label htmlFor={f.id}>{f.label}</label>
@@ -117,8 +121,8 @@ export default function RegistrationPage() {
                         required
                       >
                         <option value="" disabled>{f.placeholder}</option>
-                        {UNIVERSITIES.map(u => (
-                          <option key={u} value={u}>{u}</option>
+                        {f.options.map(opt => (
+                          <option key={opt} value={opt}>{opt}</option>
                         ))}
                       </select>
                     ) : (

@@ -20,6 +20,7 @@ export default function AdminDashboardPage() {
   const [collegeFilter, setCollegeFilter] = useState('');
   const [unitFilter,    setUnitFilter]    = useState('');
   const [universityFilter, setUniversityFilter] = useState('');
+  const [foodFilter,    setFoodFilter]    = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -88,7 +89,8 @@ export default function AdminDashboardPage() {
         (r.email       || '').toLowerCase().includes(q) ||
         (r.phone       || '').toLowerCase().includes(q) ||
         (r.po_name     || '').toLowerCase().includes(q) ||
-        (r.po_phone    || '').toLowerCase().includes(q)
+        (r.po_phone    || '').toLowerCase().includes(q) ||
+        (r.food_preference || '').toLowerCase().includes(q)
       );
     }
 
@@ -104,8 +106,12 @@ export default function AdminDashboardPage() {
       result = result.filter(r => String(r.unit_number) === unitFilter);
     }
 
+    if (foodFilter) {
+      result = result.filter(r => r.food_preference === foodFilter);
+    }
+
     setFiltered(result);
-  }, [search, universityFilter, collegeFilter, unitFilter, registrations]);
+  }, [search, universityFilter, collegeFilter, unitFilter, foodFilter, registrations]);
 
   // ── Stats ──────────────────────────────────────────────────
   const totalRegistrations = registrations.length;
@@ -113,17 +119,20 @@ export default function AdminDashboardPage() {
   const totalUnits         = new Set(registrations.map(r => r.unit_number).filter(Boolean)).size;
   const today              = new Date().toISOString().split('T')[0];
   const todayCount         = registrations.filter(r => r.created_at?.startsWith(today)).length;
+  const vegCount           = registrations.filter(r => r.food_preference === 'Veg').length;
+  const nonVegCount        = registrations.filter(r => r.food_preference === 'Non-Veg').length;
 
   // ── CSV Download ───────────────────────────────────────────
   const downloadCSV = () => {
     if (!registrations.length) return alert('No data to download.');
-    const headers = ['#', 'Full Name', 'University/Directorate', 'College', 'Unit No.', 'PO Name', 'PO Phone', 'Email', 'Phone', 'Registered At'];
+    const headers = ['#', 'Full Name', 'University/Directorate', 'College', 'Unit No.', 'Food Preference', 'PO Name', 'PO Phone', 'Email', 'Phone', 'Registered At'];
     const rows = registrations.map((s, i) => [
       i + 1,
       s.full_name ?? '',
       s.university ?? '',
       s.college ?? '',
       s.unit_number ?? '',
+      s.food_preference ?? '',
       s.po_name ?? '',
       s.po_phone ?? '',
       s.email ?? '',
@@ -218,6 +227,18 @@ export default function AdminDashboardPage() {
               </select>
             </div>
 
+            <div className="filter-group">
+              <label>Food Preference</label>
+              <select
+                value={foodFilter}
+                onChange={e => setFoodFilter(e.target.value)}
+              >
+                <option value="">All Preferences</option>
+                <option value="Veg">Veg</option>
+                <option value="Non-Veg">Non-Veg</option>
+              </select>
+            </div>
+
             <button id="downloadBtn" onClick={downloadCSV} className="action-btn-primary">
               Download CSV Report
             </button>
@@ -227,6 +248,8 @@ export default function AdminDashboardPage() {
           <div className="stats-stack">
             {[
               { label: 'Total Registrations', id: 'totalRegistrations', value: totalRegistrations, border: 'var(--moss)' },
+              { label: 'Veg Registrations',    id: 'vegRegistrations',    value: vegCount, border: 'var(--gold)' },
+              { label: 'Non-Veg Registrations',id: 'nonVegRegistrations', value: nonVegCount, border: 'var(--moss)' },
               { label: 'Total Colleges',       id: 'totalColleges',       value: totalColleges, border: 'var(--gold)' },
               { label: 'Total NSS Units',      id: 'totalUnits',          value: totalUnits, border: 'var(--moss)' },
               { label: "Today's Registrations",id: 'todayRegistrations',  value: todayCount, border: 'var(--gold)' },
@@ -262,6 +285,7 @@ export default function AdminDashboardPage() {
                     <th>University/Directorate</th>
                     <th>College</th>
                     <th>Unit No.</th>
+                    <th>Food Preference</th>
                     <th>PO Name</th>
                     <th>PO Phone</th>
                     <th>Email</th>
@@ -271,13 +295,13 @@ export default function AdminDashboardPage() {
                 <tbody id="tableBody">
                   {loading ? (
                     <tr>
-                      <td colSpan="9" className="table-placeholder">
+                      <td colSpan="10" className="table-placeholder">
                         Loading registrations…
                       </td>
                     </tr>
                   ) : filtered.length === 0 ? (
                     <tr>
-                      <td colSpan="9" className="table-placeholder">
+                      <td colSpan="10" className="table-placeholder">
                         No registrations found.
                       </td>
                     </tr>
@@ -289,6 +313,7 @@ export default function AdminDashboardPage() {
                         <td>{escapeHtml(s.university)}</td>
                         <td>{escapeHtml(s.college)}</td>
                         <td>{escapeHtml(s.unit_number)}</td>
+                        <td>{escapeHtml(s.food_preference)}</td>
                         <td>{escapeHtml(s.po_name)}</td>
                         <td className="font-mono">{escapeHtml(s.po_phone)}</td>
                         <td>{escapeHtml(s.email)}</td>

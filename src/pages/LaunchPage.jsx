@@ -14,9 +14,8 @@ export default function LaunchPage() {
           Punarva <span>2K26</span>
         </h1>
         <p className="hero-tagline">Learn it. Fix it. Reuse it. Recycle it.</p>
-        <p className="hero-desc" style={{ margin: '24px auto', maxWidth: '540px' }}>
-          A State-Level Recycling &amp; Upcycling Hands-on Training Camp under the Swachhata Action Plan —
-          24–26 July 2026 at EMEA College of Arts &amp; Science, Kondotty.
+        <p className="hero-desc" style={{ margin: '24px auto', maxWidth: '640px' }}>
+          A State-Level Recycling &amp; Upcycling Hands-on Training Camp under the Swachhata Action Plan. Organized in collaboration with the Regional Directorate of NSS, Thiruvananthapuram &amp; State NSS Cell, Kerala · 24–26 July 2026 at EMEA College, Kondotty.
         </p>
 
         <div className="hero-actions" style={{ marginTop: '32px' }}>

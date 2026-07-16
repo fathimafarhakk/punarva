@@ -7,12 +7,18 @@ import Footer from '../components/Footer';
 import Countdown from '../components/Countdown';
 import EventModal from '../components/EventModal';
 
+import barathLogo from '../assets/Barath.jpeg';
+import govIndiaLogo from '../assets/Gov_india.png';
+import govKeralaLogo from '../assets/Gov_kerala.png';
+import calicutUnivLogo from '../assets/calicut_university.png';
+
 const EVENTS = [
   { key: 'led',      num: '01', icon: 'bulb', title: 'LED Bulb Repair', desc: 'Learn to test, rebuild, and restore discarded LED bulbs and drivers.' },
   { key: 'tube',     num: '02', icon: 'tube', title: 'Tube Light Repair', desc: 'Reassemble and troubleshoot electronic chokes and energy-saving tube systems.' },
-  { key: 'umbrella', num: '03', icon: 'fish', title: 'Umbrella Sheet Bag', desc: 'Transform waste umbrella nylon fabric into durable waterproof fish bags.' },
-  { key: 'saree',    num: '04', icon: 'bag',  title: 'Saree Carry Bag', desc: 'Stitch and craft discarded traditional sarees into eco-friendly carry bags.' },
-  { key: 'fan',      num: '05', icon: 'fan',  title: 'BLDC Fan Conversion', desc: 'Convert energy-inefficient AC fans to modern, smart BLDC motors.' },
+  { key: 'tiles',    num: '03', icon: 'vase', title: 'Decorative Vase', desc: 'Upcycle broken ceramic tiles into handcrafted decorative vases.' },
+  { key: 'umbrella', num: '04', icon: 'fish', title: 'Umbrella Sheet Bag', desc: 'Transform waste umbrella nylon fabric into durable waterproof fish bags.' },
+  { key: 'saree',    num: '05', icon: 'bag',  title: 'Saree Carry Bag', desc: 'Stitch and craft discarded traditional sarees into eco-friendly carry bags.' },
+  { key: 'fan',      num: '06', icon: 'fan',  title: 'BLDC Fan Conversion', desc: 'Convert energy-inefficient AC fans to modern, smart BLDC motors.' },
 ];
 
 const SVG_ICONS = {
@@ -61,6 +67,8 @@ export default function HomePage() {
             </svg>
           </div>
           <div className="hero-inner">
+            
+
             <h1 className="sr-only" style={{ position: "absolute", width: "1px", height: "1px", padding: 0, margin: "-1px", overflow: "hidden", clip: "rect(0,0,0,0)", border: 0 }}>
               Punarva 2K26 - State-Level NSS Camp
             </h1>
@@ -69,34 +77,82 @@ export default function HomePage() {
               initial={{ scale: 0.75, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", stiffness: 100, damping: 14 }}
-              whileHover={{ scale: 1.05 }}
-              style={{ display: "flex", justifyContent: "center", marginBottom: "34px" }}
+              whileHover={{ scale: 1.02 }}
+              style={{ display: "flex", justifyContent: "center", marginBottom: "24px", position: "relative" }}
             >
+              <div style={{
+                position: 'absolute',
+                width: '180px',
+                height: '180px',
+                background: 'rgba(214, 158, 28, 0.15)',
+                filter: 'blur(60px)',
+                borderRadius: '50%',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: -1,
+                pointerEvents: 'none'
+              }} />
               <img 
                 src="/logo.png" 
                 alt="PUNARVA 2K26 Logo" 
                 className="hero-logo"
               />
             </motion.div>
-            
+
             <motion.p 
-              className="hero-tagline"
-              initial={{ opacity: 0, y: 16 }}
+              className="hero-collab"
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.5, ease: 'easeOut' }}
+              transition={{ delay: 0.25, duration: 0.5 }}
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '20px',
+                color: '#b31f24',
+                marginTop: '20px',
+                fontWeight: '800',
+                lineHeight: '1.4',
+                maxWidth: '720px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                letterSpacing: '-0.2px'
+              }}
             >
-              Learn it. Fix it. Reuse it. Recycle it.
-            </motion.p>
-            
-            <motion.p 
-              className="hero-desc"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.5, ease: 'easeOut' }}
-            >
-              State-Level Hands-On Upcycling &amp; Recycling Training Camp
+              In Collaboration with Regional Directorate of NSS, Thiruvananthapuram, State NSS Cell, Kerala &amp; NSS Calicut University
             </motion.p>
 
+            <motion.div 
+              className="hero-collab-logos"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.5, ease: 'easeOut' }}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '24px',
+                marginTop: '28px',
+                marginBottom: '20px',
+                flexWrap: 'wrap',
+                background: 'rgba(255, 253, 248, 0.6)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                border: '1px solid var(--kraft-line)',
+                padding: '16px 32px',
+                borderRadius: '50px',
+                width: 'fit-content',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                boxShadow: 'var(--shadow-soft)'
+              }}
+            >
+              <img src={govIndiaLogo} alt="Regional Directorate of NSS Logo" style={{ height: '48px', objectFit: 'contain' }} />
+              <img src={govKeralaLogo} alt="State NSS Cell Kerala Logo" style={{ height: '48px', objectFit: 'contain' }} />
+              <img src={calicutUnivLogo} alt="Calicut University Logo" style={{ height: '48px', objectFit: 'contain' }} />
+              <img src={barathLogo} alt="Swachhata Action Plan Logo" style={{ height: '48px', objectFit: 'contain' }} />
+            </motion.div>
+
+            {/* 
             <motion.div 
               className="hero-chips"
               initial={{ opacity: 0, y: 12 }}
@@ -116,6 +172,7 @@ export default function HomePage() {
                 Swachhata Action Plan
               </span>
             </motion.div>
+            */}
             <motion.div 
               className="hero-actions"
               initial={{ opacity: 0, y: 12 }}
@@ -123,13 +180,18 @@ export default function HomePage() {
               transition={{ delay: 0.45, duration: 0.4, ease: 'easeOut' }}
             >
               <Link className="btn btn-primary" to="/registration">Register Now</Link>
-              <a className="btn btn-ghost" href="#camp">See camp details ↓</a>
+              <a className="btn btn-ghost" href="/brochure.pdf" download="PUNARVA_2026_Brochure.pdf" style={{ borderColor: 'var(--moss)', color: 'var(--moss)' }}>
+                <svg className="ic" viewBox="0 0 24 24" style={{ marginRight: '6px' }}><path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Download Brochure
+              </a>
+              <a className="btn btn-ghost" href="#camp">See details ↓</a>
             </motion.div>
           </div>
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.55, duration: 0.5, ease: 'easeOut' }}
+            style={{ marginTop: '100px' }}
           >
             <Countdown />
           </motion.div>
@@ -169,8 +231,8 @@ export default function HomePage() {
                 <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M9.5 3.5 6 9.8m0 0-2.6-1M6 9.8l3 1.9M17.6 6.2l3.9 5.5m0 0-3 .7m3-.7-1.6 2.9M13 20.5H6.4a1 1 0 0 1-.9-1.5l2-3.5m5.5 5-2.2-2.6m2.2 2.6 2.4-2.4M17.3 20.5h1.5a2 2 0 0 0 1.7-3l-1.7-3"/></svg>
               </span>
               <h3>About Punarva</h3>
-              <p>The NSS Units <strong>102 &amp; 115</strong> of <strong>EMEA College of Arts and Science, Kondotty</strong> present <strong>"PUNARVA 2K26"</strong> — a State-Level Recycling and Upcycling Hands-on Training Camp organised under the Swachhata Action Plan.</p>
-              <p>The camp gives NSS volunteers practical training in recycling, upcycling, repair and sustainable waste management — building technical skill, environmental responsibility, creativity and a spirit of community service.</p>
+              <p>The NSS Units 102 and 115 of EMEA College of Arts and Science, Kondotty, organizing “PUNARVA 2K26”, a State-Level Recycling and Upcycling Hands-on Training Camp in collaboration with the Regional Directorate of NSS, Thiruvananthapuram, State NSS Cell, Kerala and NSS, Calicut University under the Swachhata Action Plan.</p>
+              <p>The camp will provide NSS volunteers with practical training in recycling, upcycling, repair, and sustainable waste management, fostering technical skills, environmental responsibility, creativity, and community service.</p>
             </motion.article>
             <motion.article 
               className="about-card torn-top"
@@ -183,8 +245,8 @@ export default function HomePage() {
                 <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" d="m12 3 2.4 1.7 2.9-.2 1 2.7 2.5 1.5-.7 2.9.7 2.9-2.5 1.5-1 2.7-2.9-.2L12 20l-2.4-1.7-2.9.2-1-2.7-2.5-1.5.7-2.9-.7-2.9 2.5-1.5 1-2.7 2.9.2L12 3Z"/><circle cx="12" cy="11" r="2.4" fill="currentColor"/></svg>
               </span>
               <h3>About NSS EMEA</h3>
-              <p>NSS EMEA College of Arts &amp; Science, Kondotty is a socially committed unit promoting community service, environmental conservation, youth leadership and social awareness.</p>
-              <p>Through innovative programmes and outreach initiatives, it nurtures responsible citizenship, sustainable development and a lasting spirit of service among students.</p>
+              <p>NSS EMEA College of Arts &amp; Science, Kondotty, is committed to community service, environmental conservation, youth leadership, and social awareness. Through impactful outreach programmes, it promotes responsible citizenship and volunteerism.</p>
+              <p>The unit has also constructed houses for underprivileged families and successfully organized ESTIVAL, the State-Level NSS Fest, showcasing excellence in leadership, teamwork, event management, and social commitment.</p>
             </motion.article>
           </motion.div>
         </motion.section>
@@ -353,6 +415,17 @@ export default function HomePage() {
               <img src="/nss-logo.png" alt="NSS Logo" className="org-seal-img" style={{ height: '50px', objectFit: 'contain', marginBottom: '16px' }} />
               <h4>Organized By</h4>
               <p>National Service Scheme (NSS)<br />EMEA College Units 102 &amp; 115</p>
+            </motion.div>
+            <motion.div 
+              className="org-card"
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+              }}
+            >
+              <img src="/nss-logo.png" alt="NSS Logo" className="org-seal-img" style={{ height: '50px', objectFit: 'contain', marginBottom: '16px' }} />
+              <h4>In Collaboration With</h4>
+              <p>Regional Directorate of NSS, Thiruvananthapuram<br />&amp; State NSS Cell, Kerala</p>
             </motion.div>
             <motion.div 
               className="org-card"
