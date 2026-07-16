@@ -7,7 +7,7 @@ import StatusModal from '../components/StatusModal';
 import { supabase } from '../utils/supabase';
 import '../styles/registration.css';
 
-const INITIAL = { full_name: '', university: '', college: '', unit_number: '', email: '', phone: '' };
+const INITIAL = { full_name: '', university: '', college: '', unit_number: '', email: '', phone: '', po_name: '', po_phone: '' };
 
 const UNIVERSITIES = [
   'Calicut University',
@@ -97,6 +97,8 @@ export default function RegistrationPage() {
                   { id: 'university',   label: 'University/Directorate', type: 'select', placeholder: 'Select University/Directorate' },
                   { id: 'college',      label: 'College',               type: 'text',   placeholder: 'Enter your college name' },
                   { id: 'unit_number',  label: 'Unit Number',           type: 'text',   placeholder: 'Enter your unit number' },
+                  { id: 'po_name',      label: 'Program Officer Name',  type: 'text',   placeholder: 'Enter Program Officer name' },
+                  { id: 'po_phone',     label: 'Program Officer Mobile Number', type: 'tel', placeholder: 'Enter 10-digit mobile number', pattern: '[0-9]{10}' },
                   { id: 'email',        label: 'Email Address',         type: 'email',  placeholder: 'Enter your email address' },
                   { id: 'phone',        label: 'Phone Number',          type: 'tel',    placeholder: 'Enter 10-digit phone number', pattern: '[0-9]{10}' },
                 ].map(f => (

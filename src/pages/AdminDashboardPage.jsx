@@ -86,7 +86,9 @@ export default function AdminDashboardPage() {
         (r.university  || '').toLowerCase().includes(q) ||
         (r.college     || '').toLowerCase().includes(q) ||
         (r.email       || '').toLowerCase().includes(q) ||
-        (r.phone       || '').toLowerCase().includes(q)
+        (r.phone       || '').toLowerCase().includes(q) ||
+        (r.po_name     || '').toLowerCase().includes(q) ||
+        (r.po_phone    || '').toLowerCase().includes(q)
       );
     }
 
@@ -115,15 +117,17 @@ export default function AdminDashboardPage() {
   // ── CSV Download ───────────────────────────────────────────
   const downloadCSV = () => {
     if (!registrations.length) return alert('No data to download.');
-    const headers = ['#', 'Full Name', 'University/Directorate', 'College', 'Email', 'Phone', 'Unit No.', 'Registered At'];
+    const headers = ['#', 'Full Name', 'University/Directorate', 'College', 'Unit No.', 'PO Name', 'PO Phone', 'Email', 'Phone', 'Registered At'];
     const rows = registrations.map((s, i) => [
       i + 1,
       s.full_name ?? '',
       s.university ?? '',
       s.college ?? '',
+      s.unit_number ?? '',
+      s.po_name ?? '',
+      s.po_phone ?? '',
       s.email ?? '',
       s.phone ?? '',
-      s.unit_number ?? '',
       s.created_at ? new Date(s.created_at).toLocaleString() : '',
     ].map(v => `"${String(v).replace(/"/g, '""')}"`));
     const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
@@ -257,21 +261,23 @@ export default function AdminDashboardPage() {
                     <th>Full Name</th>
                     <th>University/Directorate</th>
                     <th>College</th>
+                    <th>Unit No.</th>
+                    <th>PO Name</th>
+                    <th>PO Phone</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Unit No.</th>
                   </tr>
                 </thead>
                 <tbody id="tableBody">
                   {loading ? (
                     <tr>
-                      <td colSpan="7" className="table-placeholder">
+                      <td colSpan="9" className="table-placeholder">
                         Loading registrations…
                       </td>
                     </tr>
                   ) : filtered.length === 0 ? (
                     <tr>
-                      <td colSpan="7" className="table-placeholder">
+                      <td colSpan="9" className="table-placeholder">
                         No registrations found.
                       </td>
                     </tr>
@@ -282,9 +288,11 @@ export default function AdminDashboardPage() {
                         <td className="font-semibold">{escapeHtml(s.full_name)}</td>
                         <td>{escapeHtml(s.university)}</td>
                         <td>{escapeHtml(s.college)}</td>
+                        <td>{escapeHtml(s.unit_number)}</td>
+                        <td>{escapeHtml(s.po_name)}</td>
+                        <td className="font-mono">{escapeHtml(s.po_phone)}</td>
                         <td>{escapeHtml(s.email)}</td>
                         <td className="font-mono">{escapeHtml(s.phone)}</td>
-                        <td>{escapeHtml(s.unit_number)}</td>
                       </tr>
                     ))
                   )}
