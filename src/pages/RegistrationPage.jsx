@@ -7,7 +7,30 @@ import StatusModal from '../components/StatusModal';
 import { supabase } from '../utils/supabase';
 import '../styles/registration.css';
 
-const INITIAL = { full_name: '', college: '', unit_number: '', email: '', phone: '' };
+const INITIAL = { full_name: '', university: '', college: '', unit_number: '', email: '', phone: '' };
+
+const UNIVERSITIES = [
+  'Calicut University',
+  'Kannur University',
+  'M.G. University',
+  'APJ Kalam Technical University',
+  'Kerala University',
+  'Central University',
+  'Sri Shankaracharya Sanskrit University',
+  'KUFOS',
+  'KUHS',
+  'KVASU',
+  'Kerala Agricultural University',
+  'CUSAT',
+  'NIT',
+  'IHRD',
+  'AMU',
+  'JHU',
+  'CSU',
+  'Kerala Digital University',
+  'Malayalam University',
+  'ITD Dept.'
+];
 
 export default function RegistrationPage() {
   const [form, setForm]       = useState(INITIAL);
@@ -70,23 +93,38 @@ export default function RegistrationPage() {
 
               <form id="registrationForm" onSubmit={handleSubmit}>
                 {[
-                  { id: 'full_name',    label: 'Full Name',      type: 'text',  placeholder: 'Enter your full name' },
-                  { id: 'college',      label: 'College',        type: 'text',  placeholder: 'Enter your college name' },
-                  { id: 'unit_number',  label: 'Unit Number',    type: 'text',  placeholder: 'Enter your unit number' },
-                  { id: 'email',        label: 'Email Address',  type: 'email', placeholder: 'Enter your email address' },
-                  { id: 'phone',        label: 'Phone Number',   type: 'tel',   placeholder: 'Enter 10-digit phone number', pattern: '[0-9]{10}' },
+                  { id: 'full_name',    label: 'Full Name',             type: 'text',   placeholder: 'Enter your full name' },
+                  { id: 'university',   label: 'University/Directorate', type: 'select', placeholder: 'Select University/Directorate' },
+                  { id: 'college',      label: 'College',               type: 'text',   placeholder: 'Enter your college name' },
+                  { id: 'unit_number',  label: 'Unit Number',           type: 'text',   placeholder: 'Enter your unit number' },
+                  { id: 'email',        label: 'Email Address',         type: 'email',  placeholder: 'Enter your email address' },
+                  { id: 'phone',        label: 'Phone Number',          type: 'tel',    placeholder: 'Enter 10-digit phone number', pattern: '[0-9]{10}' },
                 ].map(f => (
                   <div className="input-group" key={f.id}>
                     <label htmlFor={f.id}>{f.label}</label>
-                    <input
-                      id={f.id}
-                      type={f.type}
-                      placeholder={f.placeholder}
-                      pattern={f.pattern}
-                      value={form[f.id]}
-                      onChange={handleChange}
-                      required
-                    />
+                    {f.type === 'select' ? (
+                      <select
+                        id={f.id}
+                        value={form[f.id]}
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="" disabled>{f.placeholder}</option>
+                        {UNIVERSITIES.map(u => (
+                          <option key={u} value={u}>{u}</option>
+                        ))}
+                      </select>
+                    ) : (
+                      <input
+                        id={f.id}
+                        type={f.type}
+                        placeholder={f.placeholder}
+                        pattern={f.pattern}
+                        value={form[f.id]}
+                        onChange={handleChange}
+                        required
+                      />
+                    )}
                   </div>
                 ))}
 

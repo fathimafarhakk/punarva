@@ -19,6 +19,7 @@ export default function AdminDashboardPage() {
   const [search,        setSearch]        = useState('');
   const [collegeFilter, setCollegeFilter] = useState('');
   const [unitFilter,    setUnitFilter]    = useState('');
+  const [universityFilter, setUniversityFilter] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -72,6 +73,7 @@ export default function AdminDashboardPage() {
   // ── Unique Filters List ────────────────────────────────────
   const uniqueColleges = Array.from(new Set(registrations.map(r => r.college).filter(Boolean))).sort();
   const uniqueUnits = Array.from(new Set(registrations.map(r => r.unit_number).filter(Boolean))).sort();
+  const uniqueUniversities = Array.from(new Set(registrations.map(r => r.university).filter(Boolean))).sort();
 
   // ── Filtering Logic ────────────────────────────────────────
   useEffect(() => {
@@ -81,10 +83,15 @@ export default function AdminDashboardPage() {
     if (q) {
       result = result.filter(r =>
         (r.full_name   || '').toLowerCase().includes(q) ||
+        (r.university  || '').toLowerCase().includes(q) ||
         (r.college     || '').toLowerCase().includes(q) ||
         (r.email       || '').toLowerCase().includes(q) ||
         (r.phone       || '').toLowerCase().includes(q)
       );
+    }
+
+    if (universityFilter) {
+      result = result.filter(r => r.university === universityFilter);
     }
 
     if (collegeFilter) {
@@ -96,7 +103,7 @@ export default function AdminDashboardPage() {
     }
 
     setFiltered(result);
-  }, [search, collegeFilter, unitFilter, registrations]);
+  }, [search, universityFilter, collegeFilter, unitFilter, registrations]);
 
   // ── Stats ──────────────────────────────────────────────────
   const totalRegistrations = registrations.length;
@@ -108,10 +115,11 @@ export default function AdminDashboardPage() {
   // ── CSV Download ───────────────────────────────────────────
   const downloadCSV = () => {
     if (!registrations.length) return alert('No data to download.');
-    const headers = ['#', 'Full Name', 'College', 'Email', 'Phone', 'Unit No.', 'Registered At'];
+    const headers = ['#', 'Full Name', 'University/Directorate', 'College', 'Email', 'Phone', 'Unit No.', 'Registered At'];
     const rows = registrations.map((s, i) => [
       i + 1,
       s.full_name ?? '',
+      s.university ?? '',
       s.college ?? '',
       s.email ?? '',
       s.phone ?? '',
@@ -165,6 +173,19 @@ export default function AdminDashboardPage() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
+            </div>
+
+            <div className="filter-group">
+              <label>University</label>
+              <select
+                value={universityFilter}
+                onChange={e => setUniversityFilter(e.target.value)}
+              >
+                <option value="">All Universities</option>
+                {uniqueUniversities.map(u => (
+                  <option key={u} value={u}>{u}</option>
+                ))}
+              </select>
             </div>
 
             <div className="filter-group">
@@ -234,6 +255,7 @@ export default function AdminDashboardPage() {
                   <tr>
                     <th>#</th>
                     <th>Full Name</th>
+                    <th>University/Directorate</th>
                     <th>College</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -243,13 +265,13 @@ export default function AdminDashboardPage() {
                 <tbody id="tableBody">
                   {loading ? (
                     <tr>
-                      <td colSpan="6" className="table-placeholder">
+                      <td colSpan="7" className="table-placeholder">
                         Loading registrations…
                       </td>
                     </tr>
                   ) : filtered.length === 0 ? (
                     <tr>
-                      <td colSpan="6" className="table-placeholder">
+                      <td colSpan="7" className="table-placeholder">
                         No registrations found.
                       </td>
                     </tr>
@@ -258,6 +280,7 @@ export default function AdminDashboardPage() {
                       <tr key={s.id ?? i}>
                         <td>{i + 1}</td>
                         <td className="font-semibold">{escapeHtml(s.full_name)}</td>
+                        <td>{escapeHtml(s.university)}</td>
                         <td>{escapeHtml(s.college)}</td>
                         <td>{escapeHtml(s.email)}</td>
                         <td className="font-mono">{escapeHtml(s.phone)}</td>

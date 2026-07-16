@@ -65,7 +65,8 @@
   font-weight: 700;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
   width: 100%;
   padding: 14px 18px;
   background: var(--paper);
@@ -78,7 +79,8 @@
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.input-group input:focus {
+.input-group input:focus,
+.input-group select:focus {
   border-color: var(--forest);
   box-shadow: 0 0 0 4px rgba(28, 56, 41, 0.1);
 }
