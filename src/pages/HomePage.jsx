@@ -80,7 +80,7 @@ export default function HomePage() {
                 alignItems: 'center',
                 gap: '24px',
                 marginTop: '-50px',
-                marginBottom: '50px',
+                marginBottom: '70px',
                 flexWrap: 'wrap',
                 background: 'rgba(255, 253, 248, 0.6)',
                 backdropFilter: 'blur(8px)',
