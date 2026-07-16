@@ -40,6 +40,7 @@ export default function RegistrationPage() {
 
   useEffect(() => {
     document.documentElement.classList.add('no-splash');
+    window.scrollTo(0, 0);
   }, []);
 
   const handleChange = e =>
