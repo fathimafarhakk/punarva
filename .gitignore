@@ -28,4 +28,5 @@ dist-ssr
 punarva-html/
 brochure_text.txt
 *.pdf
+!public/brochure.pdf
 
