@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
@@ -37,6 +37,10 @@ export default function RegistrationPage() {
   const [loading, setLoading] = useState(false);
   const [modal, setModal]     = useState(null); // null | { success, title, message }
   const navigate              = useNavigate();
+
+  useEffect(() => {
+    document.documentElement.classList.add('no-splash');
+  }, []);
 
   const handleChange = e =>
     setForm(prev => ({ ...prev, [e.target.id]: e.target.value }));
