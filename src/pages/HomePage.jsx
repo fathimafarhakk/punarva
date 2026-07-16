@@ -69,6 +69,36 @@ export default function HomePage() {
           <div className="hero-inner">
             
 
+            <motion.div 
+              className="hero-collab-logos"
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '24px',
+                marginBottom: '32px',
+                flexWrap: 'wrap',
+                background: 'rgba(255, 253, 248, 0.6)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                border: '1px solid var(--kraft-line)',
+                padding: '12px 28px',
+                borderRadius: '50px',
+                width: 'fit-content',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                boxShadow: 'var(--shadow-soft)'
+              }}
+            >
+              <img src={govIndiaLogo} alt="Regional Directorate of NSS Logo" style={{ height: '42px', objectFit: 'contain' }} />
+              <img src={govKeralaLogo} alt="State NSS Cell Kerala Logo" style={{ height: '42px', objectFit: 'contain' }} />
+              <img src={calicutUnivLogo} alt="Calicut University Logo" style={{ height: '42px', objectFit: 'contain' }} />
+              <img src={barathLogo} alt="Swachhata Action Plan Logo" style={{ height: '42px', objectFit: 'contain' }} />
+            </motion.div>
+
             <h1 className="sr-only" style={{ position: "absolute", width: "1px", height: "1px", padding: 0, margin: "-1px", overflow: "hidden", clip: "rect(0,0,0,0)", border: 0 }}>
               Punarva 2K26 - State-Level NSS Camp
             </h1>
@@ -104,7 +134,7 @@ export default function HomePage() {
               className="hero-collab"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.5 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '20px',
@@ -120,37 +150,6 @@ export default function HomePage() {
             >
               In Collaboration with Regional Directorate of NSS, Thiruvananthapuram, State NSS Cell, Kerala &amp; NSS Calicut University
             </motion.p>
-
-            <motion.div 
-              className="hero-collab-logos"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.5, ease: 'easeOut' }}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: '24px',
-                marginTop: '28px',
-                marginBottom: '20px',
-                flexWrap: 'wrap',
-                background: 'rgba(255, 253, 248, 0.6)',
-                backdropFilter: 'blur(8px)',
-                WebkitBackdropFilter: 'blur(8px)',
-                border: '1px solid var(--kraft-line)',
-                padding: '16px 32px',
-                borderRadius: '50px',
-                width: 'fit-content',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                boxShadow: 'var(--shadow-soft)'
-              }}
-            >
-              <img src={govIndiaLogo} alt="Regional Directorate of NSS Logo" style={{ height: '48px', objectFit: 'contain' }} />
-              <img src={govKeralaLogo} alt="State NSS Cell Kerala Logo" style={{ height: '48px', objectFit: 'contain' }} />
-              <img src={calicutUnivLogo} alt="Calicut University Logo" style={{ height: '48px', objectFit: 'contain' }} />
-              <img src={barathLogo} alt="Swachhata Action Plan Logo" style={{ height: '48px', objectFit: 'contain' }} />
-            </motion.div>
 
             {/* 
             <motion.div 
