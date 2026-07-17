@@ -1,5 +1,7 @@
 # PUNARVA 2K26
 
+# not in production this repo 
+
 > NSS State-Level Recycling & Upcycling Hands-on Training Camp
 
 A React + Vite web application for **PUNARVA 2K26** — a State-Level Recycling & Upcycling Hands-on Training Camp organized by NSS Units 102 & 115 at EMEA College of Arts and Science, Kondotty, under the Swachhata Action Plan.
